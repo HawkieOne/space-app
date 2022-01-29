@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .info-card {
+        @apply row-span-1 col-span-1 bg-gray-800 rounded-2xl text-white
+    }
+    .current-card {
+        @apply row-span-4 col-span-3 bg-gray-800 rounded-2xl text-white
+    }
+}
