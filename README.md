@@ -42,13 +42,13 @@ Space Wisdom fetches data from an API about happenings regarding human events in
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an isntruction to setting up your project locally.
+This is an instruction to setting up your project locally.
 
 ### Prerequisites
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+Below is an example of how you can install and set up your app.
 
 1. Clone the repo
    ```sh
