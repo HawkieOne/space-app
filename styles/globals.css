@@ -9,4 +9,10 @@
     .current-card {
         @apply row-span-4 col-span-3 bg-gray-800 rounded-2xl text-white
     }
+    .cropped-image {
+        width: 450px;
+        height: 400px;
+        object-fit: cover;
+        object-position: center;
+    }
 }
