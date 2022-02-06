@@ -38,10 +38,6 @@ export default function Main() {
     <div>
       {hasFetchedData == true ?
         <div className="h-full w-full flex flex-col justify-start items-center space-y-8 p-4 bg-gray-900">
-          <div className="">
-            <DashboardTabber />
-          </div>
-
           <div className="w-full flex justify-between items-center max-w-7xl"> 
             <InfoCard />
             <InfoCard />
@@ -54,7 +50,7 @@ export default function Main() {
           <div className="flex justify-between items-center max-w-7xl"> 
             <div className="current-card w-1/2">
               <div className="h-full flex flex-col justify-center space-x-4">
-                <img src={currentLaunch.image} alt="" className="object-cover h-full rounded-t-2xl"/>
+                <img src={currentLaunch.image} alt="" className="cropped-image rounded-t-2xl"/>
                 <div className="flex flex-col justify-around items-start space-y-4 my-4">
                   <p>{currentLaunch.name}</p>
                   <p>{currentLaunch.launch_service_provider.name}</p>
