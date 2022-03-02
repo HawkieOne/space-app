@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { spaceAPI } from "./api/spaceDEvsAPI";
 export default function Launches() {
 
   const [currentLaunch, setCurrentLaunch] = useState<any>(null);
@@ -8,12 +9,10 @@ export default function Launches() {
   const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
 
   useEffect(() => {
-    axios.get("https://lldev.thespacedevs.com/2.2.0/launch/upcoming").then((response) => {
-      const data = response.data;
-      const currentLaunch = data.results[0];
-      console.log(data.results);
-      setUpcomingLaunches(data.results);
-      setCurrentLaunch(currentLaunch);
+    spaceAPI?.getLaunches!().then((launches : any) => {
+      console.log(launches);
+      setUpcomingLaunches(launches.results);
+      setCurrentLaunch(launches.results[0]);
     })
     .catch((error) => {
       console.log(error);

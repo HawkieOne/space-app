@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ListCard from '../components/ListCard';
+import { spaceAPI } from './api/spaceDEvsAPI';
 
 export default function Events() {
 
@@ -8,10 +9,9 @@ export default function Events() {
     const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
   
     useEffect(() => {
-      axios.get("https://lldev.thespacedevs.com/2.2.0/event/upcoming").then((response) => {
-        const events = response.data.results;
+      spaceAPI?.getEvents!().then((events : any) => {
         console.log(events);
-        setEvents(events);
+        setEvents(events.results);
       })
       .catch((error) => {
         console.log(error);

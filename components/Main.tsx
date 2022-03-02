@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DashboardTabber from "./DashboardTabber";
 import InfoCard from "./InfoCard";
+import { spaceAPI } from  "../pages/api/spaceDEvsAPI";
 
 export default function Main() {
 
@@ -11,12 +12,10 @@ export default function Main() {
   const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
 
   useEffect(() => {
-    axios.get("https://lldev.thespacedevs.com/2.2.0/launch/upcoming").then((response) => {
-      const data = response.data;
-      const currentLaunch = data.results[0];
-      console.log(data.results);
-      setUpcomingLaunches(data.results);
-      setCurrentLaunch(currentLaunch);
+    spaceAPI?.getLaunches!().then((launches : any) => {
+      console.log(launches);
+      setUpcomingLaunches(launches.results);
+      setCurrentLaunch(launches.results[0]);
     })
     .catch((error) => {
       console.log(error);
