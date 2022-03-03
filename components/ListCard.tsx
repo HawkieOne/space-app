@@ -2,8 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 export default function ListCard( event : any ) {
-    console.log(event.event.launches[0]);
-    
   return (
     <div className="flex flex-col justify-center items-center m-8">
         <div id="app" className="bg-white w-full h-60 rounded shadow-md flex card text-grey-darkest">
