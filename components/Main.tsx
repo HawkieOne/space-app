@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DashboardTabber from "./DashboardTabber";
 import InfoCard from "./InfoCard";
-import { spaceAPI } from  "../pages/api/spaceDEvsAPI";
+import { spaceAPI } from  "../api/spaceDevsApi";
 
 export default function Main() {
 
