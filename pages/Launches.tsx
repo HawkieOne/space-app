@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { spaceAPI } from "./api/spaceDEvsAPI";
+import { spaceAPI } from "../api/spaceDevsApi";
 export default function Launches() {
 
   const [currentLaunch, setCurrentLaunch] = useState<any>(null);

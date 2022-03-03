@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import ListCard from '../components/ListCard';
-import { spaceAPI } from './api/spaceDEvsAPI';
+import { spaceAPI } from '../api/spaceDevsApi';
 
 export default function Events() {
 
@@ -10,7 +10,6 @@ export default function Events() {
   
     useEffect(() => {
       spaceAPI?.getEvents!().then((events : any) => {
-        console.log(events);
         setEvents(events.results);
       })
       .catch((error) => {
