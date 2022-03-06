@@ -25,5 +25,41 @@ export class ApiCore {
                 return apiProvider.getAstronauts();
             }
         }
+
+        if(options.spacestations) {
+            this.getSpaceStations = () => {
+                return apiProvider.getSpaceStations();
+            }
+        }
+
+        if(options.expeditions) {
+            this.getExpeditions = () => {
+                return apiProvider.getExpeditions();
+            }
+        }
+
+        if(options.dockings) {
+            this.getDockings = () => {
+                return apiProvider.getDockings();
+            }
+        }
+
+        if(options.launchVehicles) {
+            this.getLaunchVehicles = () => {
+                return apiProvider.getLaunchVehicles();
+            }
+        }
+
+        if(options.spacecrafts) {
+            this.getSpacecrafts = () => {
+                return apiProvider.getSpacecrafts();
+            }
+        }
+
+        if(options.locations) {
+            this.getLocations = () => {
+                return apiProvider.getLocations();
+            }
+        }
     }
 }

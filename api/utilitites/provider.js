@@ -31,11 +31,62 @@ const getAstronauts = () => {
         .catch(handleError); 
 };
 
+const getSpaceStations = () => {
+    return axios
+        .get(`${BASE_URL}spacestation/?limit=20`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+const getExpeditions = () => {
+    return axios
+        .get(`${BASE_URL}expedition`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+const getDockings = () => {
+    return axios
+        .get(`${BASE_URL}docking_event`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+const getLaunchVehicles = () => {
+    return axios
+        .get(`${BASE_URL}launcher`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+const getSpacecrafts = () => {
+    return axios
+        .get(`${BASE_URL}spacecraft`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+const getLocations = () => {
+    return axios
+        .get(`${BASE_URL}location`)
+        .then(handleResponse) 
+        .catch(handleError); 
+};
+
+
+
+
 const apiProvider = {
     getLaunches,
     getEvents,
     getAgencies,
-    getAstronauts
+    getAstronauts,
+    getSpaceStations,
+    getExpeditions,
+    getDockings,
+    getLaunchVehicles,
+    getSpacecrafts,
+    getLocations,
 }
 
 export default apiProvider;
