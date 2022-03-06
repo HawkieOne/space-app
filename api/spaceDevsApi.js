@@ -6,7 +6,7 @@ export const spaceAPI = new ApiCore({
     agencies: true,
     astronauts: true,
     spacestations: true,
-    expedition: true,
+    expeditions: true,
     dockings: true,
     launchVehicles: true,
     spacecrafts: true,
