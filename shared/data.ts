@@ -30,12 +30,12 @@ export const navLinks = [
         path: "/Dockings",
     },
     {
-        name: "Launchvehicles",
-        path: "/Launchvehicles",
+        name: "Launch Vehicles",
+        path: "/LaunchVehicles",
     },
     {
-        name: "Spacecraft",
-        path: "/Spacecraft",
+        name: "Spacecrafts",
+        path: "/Spacecrafts",
     },
     {
         name: "Locations",
