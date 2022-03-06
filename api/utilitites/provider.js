@@ -9,6 +9,12 @@ const getLaunches = () => {
         .then(handleResponse) 
         .catch(handleError); 
 }
+const getPreviousLaunches = () => {
+    return axios
+        .get(`${BASE_URL}launch/previous`)
+        .then(handleResponse) 
+        .catch(handleError); 
+}
 
 const getEvents = () => {
     return axios
@@ -87,6 +93,7 @@ const apiProvider = {
     getLaunchVehicles,
     getSpacecrafts,
     getLocations,
+    getPreviousLaunches,
 }
 
 export default apiProvider;

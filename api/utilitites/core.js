@@ -7,6 +7,11 @@ export class ApiCore {
                 return apiProvider.getLaunches();
             }
         }
+        if (options.previousLaunches) {
+            this.getPreviousLaunches = () => {
+                return apiProvider.getPreviousLaunches();
+            }
+        }
 
         if (options.events) {
             this.getEvents = () => {
