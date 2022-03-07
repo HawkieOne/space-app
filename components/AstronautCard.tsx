@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
 
 export default function AstronautCard( astronaut : any ) {
   return (
-    <div className="flex flex-col justify-center items-center m-8">
+    <motion.div 
+        layout
+        animate={{ opacity: 1}} 
+        initial={{ opacity: 0 }} 
+        transition={{ ease: "easeIn", duration: 1 }}
+        className="flex flex-col justify-center items-center m-8"
+    >
         <div id="app" className="bg-white w-full h-60 rounded shadow-md flex card text-grey-darkest">
             {astronaut.astronaut.image_url !== null
                 ? <img className="w-128 h-full rounded-l-lg border-l-white border-l-2" src={astronaut.astronaut.profile_image} alt="Agency image" />
@@ -42,6 +49,6 @@ export default function AstronautCard( astronaut : any ) {
                 </div> */}
             </div>
         </div>
-    </div>
+    </motion.div>
   );
 }

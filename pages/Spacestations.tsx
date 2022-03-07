@@ -1,8 +1,10 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { spaceAPI } from "../api/spaceDevsApi";
 import Select from 'react-select';
-import { compareOldest, compareNewest, compareAZ, compareZA } from "../shared/sortMethods";
+import { spaceAPI } from "../api/spaceDevsApi";
 import { customStyles } from "../shared/cssSelect";
+import { compareAZ, compareNewest, compareOldest, compareZA } from "../shared/sortMethods";
+
 
 
 const options = [
@@ -86,27 +88,37 @@ export default function Spacestations() {
             styles={customStyles}
         />
 
-        <div className="grid grid-cols-4 gap-6">
-            {spacestations.map((spacestation : any, index : any) => (
-                <div>
-                    <div className="rounded overflow-hidden shadow-lg bg-slate-800 cursor-pointer hover:scale-105 hover:border-2 border-orange-600" key={spacestation.id}>
-                        <img className="w-full max-h-52 bg-white" src={spacestation.image_url} alt="River"/>
-                        <div className="px-4 py-2">
-                            <div className="font-bold text-lg mb-2 text-white">{spacestation.name}</div>
-                            <p className="text-gray-700 text-base">
-                                {/* {spacestation.description} */}
-                            </p>
-                        </div>
-                        <div className="px-4 pt-2 pb-2">
-                            {spacestation.deorbited !== null 
-                                ? <span className="inline-block bg-gray-900 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2">Deorbited</span>      
-                                : <span className="inline-block bg-gray-900 rounded-full px-3 py-1 text-sm font-semibold text-green-700 mr-2 mb-2">In orbit</span>                     
-                            }
-                        </div>
-                    </div>
-                </div>
+        <motion.div 
+          layout 
+          className="grid grid-cols-4 gap-6"
+        >
+            {spacestations.map((spacestation : any, index : any) => ( 
+              <AnimatePresence>
+                <motion.div 
+                  layout 
+                  animate={{ opacity: 1}} 
+                  initial={{ opacity: 0 }} 
+                  exit={{ opacity: 0 }}
+                  className="rounded overflow-hidden shadow-lg bg-slate-800 cursor-pointer hover:scale-105 hover:border-2 border-orange-600" 
+                  key={spacestation.id}
+                >
+                  <img className="w-full max-h-52 bg-white" src={spacestation.image_url} alt="River"/>
+                  <div className="px-4 py-2">
+                      <div className="font-bold text-lg mb-2 text-white">{spacestation.name}</div>
+                      <p className="text-gray-700 text-base">
+                          {/* {spacestation.description} */}
+                      </p>
+                  </div>
+                  <div className="px-4 pt-2 pb-2">
+                      {spacestation.deorbited !== null 
+                          ? <span className="inline-block bg-gray-900 rounded-full px-3 py-1 text-sm font-semibold text-red-700 mr-2 mb-2">Deorbited</span>      
+                          : <span className="inline-block bg-gray-900 rounded-full px-3 py-1 text-sm font-semibold text-green-700 mr-2 mb-2">In orbit</span>                     
+                      }
+                  </div>
+              </motion.div>
+            </AnimatePresence>           
             ))}
-        </div>
+        </motion.div>
       </div>
         : null
       }      

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion} from "framer-motion";
 import { spaceAPI } from "../api/spaceDevsApi";
 import AgencyCard from "../components/AgencyCard";
 import AstronautCard from "../components/AstronautCard";
@@ -27,15 +28,18 @@ export default function Astronauts() {
   }, [astronauts]);
 
   return (
-    <div className="bg-gray-900">
+    <motion.div layout className="bg-gray-900">
       {hasFetchedData === true 
       ?
         astronauts.map((astronaut : any, index : any) => (
-          <AstronautCard key={astronaut.id} astronaut={astronaut}/>
+          <AstronautCard 
+            key={astronaut.id} 
+            astronaut={astronaut}
+          />
         ))
         : null
       }      
-    </div>
+    </motion.div>
   )
 }
 
