@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import DashboardTabber from "./DashboardTabber";
-import InfoCard from "./InfoCard";
 import { spaceAPI } from  "../api/spaceDevsApi";
 import Moment from 'react-moment';
 
@@ -48,46 +47,47 @@ const today = new Date();
     <div>
       {hasFetchedData == true ?
         <div className="h-full w-full flex flex-col justify-start items-center space-y-8 p-4 bg-gray-900">
-          <div className="w-full grid grid-cols-4  gap-4 max-w-7xl"> 
+          <div className="w-full flex gap-8 justify-center max-w-7xl"> 
 
-            <div className="info-card px-4 py-1 divide-y divide-white">
+            <div className="info-card px-6 py-1 divide-y divide-white w-fit">
                 <div className="text-center pt-2 text-red-300">
                     NEXT LAUNCH
                 </div>
-                <div className="text-center py-4">
-                  <Moment format="YYYY-MM-DD HH:SS" className="text-xl">{currentLaunch.net}</Moment>
-                </div>
-            </div>
-     
-            <div className="info-card px-4 py-1 divide-y divide-white">
-                <div className="text-center pt-2 text-red-300">
-                    DAYS UNTIL NEXT LAUNCH
-                </div>
-                <div className="text-center py-4 flex justify-center items-center">
-                  <Moment diff={today} unit="days" className="text-6xl text-emerald-700">{upcomingLaunches[0].net}</Moment>
-                  {/* <p className="ml-1">{Moment(today).diff(upcomingLaunches[0].net, 'days') == 1 
-                    ? 'DAY'
-                    : 'DAYS'
-                  }</p> */}
-                  <p className="ml-1">DAY</p>
+                <div className="text-center py-4 flex flex-col">
+                  <p className="text-xl">{upcomingLaunches[0].rocket.configuration.full_name}</p>
+                  <Moment format="YYYY-MM-DD HH:SS" className="text-lg">{upcomingLaunches[0].net}</Moment>
+                  <div>
+                    <Moment diff={today} unit="days" className="text-3xl text-emerald-700">{upcomingLaunches[0].net}</Moment>
+                    <span className="ml-1">{upcomingLaunches[0].net === 1 ? "day" : "days"} to launch</span>
+                  </div>
                 </div>
             </div>
       
-            <div className="info-card px-4 py-1 divide-y divide-white">
+            <div className="info-card px-4 py-1 divide-y divide-white w-fit">
                 <div className="text-center pt-2 text-red-300">
-                    DAYS UNTIL CHOSEN LAUNCH
+                    CHOSEN LAUNCH
                 </div>
-                <div className="text-center py-4 flex justify-center items-center">
-                  <Moment diff={new Date().toString()} unit="days" className="text-6xl text-emerald-700">{currentLaunch.net}</Moment><p className="ml-1">DAYS</p>
+                <div className="text-center py-4 flex flex-col">
+                  <p className="text-xl">{currentLaunch.rocket.configuration.full_name}</p>
+                  <Moment format="YYYY-MM-DD HH:SS" className="text-lg">{currentLaunch.net}</Moment>
+                  <div>
+                    <Moment diff={today} unit="days" className="text-3xl text-emerald-700">{currentLaunch.net}</Moment>
+                    <span className="ml-1">{currentLaunch.net === 1 ? "day" : "days"} to launch</span>
+                  </div>
                 </div>
             </div>
 
-            <div className="info-card px-4 py-1 divide-y divide-white">
+            <div className="info-card px-4 py-1 divide-y divide-white w-fit">
                 <div className="text-center pt-2 text-red-300">
                     DAYS SINCE LAST LAUNCH
                 </div>
-                <div className="text-center py-4 flex justify-center items-center">
-                  <Moment diff='2022-03-02' unit="days" className="text-6xl text-cyan-700">{new Date().toString()}</Moment><p className="ml-1">DAYS</p>
+                <div className="text-center py-4 flex flex-col">
+                  <p className="text-xl">{lastPreviousLaunch.rocket.configuration.full_name}</p>
+                  <Moment format="YYYY-MM-DD HH:SS" className="text-lg">{lastPreviousLaunch.net}</Moment>
+                  <div>
+                    <Moment diff={lastPreviousLaunch.net} unit="days" className="text-3xl text-cyan-700">{today}</Moment>
+                    <span className="ml-1">{lastPreviousLaunch.net === 1 ? "day" : "days"} ago</span>
+                  </div>
                 </div>
             </div>
 
