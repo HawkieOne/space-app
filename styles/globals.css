@@ -4,7 +4,7 @@
 
 @layer components {
   .info-card {
-    @apply col-span-1 row-span-1 rounded-2xl bg-gray-800 text-white;
+    @apply col-span-1 row-span-1 bg-gray-800 text-white;
   }
   .current-card {
     @apply rounded-2xl bg-gray-800 text-white;
