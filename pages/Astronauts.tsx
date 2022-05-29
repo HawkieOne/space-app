@@ -1,7 +1,6 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion} from "framer-motion";
 import { spaceAPI } from "../api/spaceDevsApi";
-import AgencyCard from "../components/AgencyCard";
 import AstronautCard from "../components/AstronautCard";
 
 
