@@ -19,7 +19,7 @@ export default function Astronauts() {
       console.log(error);
     });
   }, []);
-  
+
   useEffect(() => {
     if (astronauts != null) {
       setHasFetchedData(true);
@@ -28,17 +28,16 @@ export default function Astronauts() {
 
   return (
     <motion.div layout className="bg-gray-900">
-      {hasFetchedData === true 
+      {hasFetchedData === true
       ?
         astronauts.map((astronaut : any, index : any) => (
-          <AstronautCard 
-            key={astronaut.id} 
+          <AstronautCard
+            key={astronaut.id}
             astronaut={astronaut}
           />
         ))
         : null
-      }      
+      }
     </motion.div>
   )
 }
-
