@@ -21,6 +21,7 @@ export default function Main() {
     .catch((error) => {
       console.log(error);
     });
+
     spaceAPI?.getPreviousLaunches!().then((prevLaunches : any) => {
       console.log(prevLaunches);
       setLastPreviousLaunch(prevLaunches.results[0]);
@@ -31,10 +32,10 @@ export default function Main() {
   }, []);
   
   useEffect(() => {
-    if (currentLaunch != null && upcomingLaunches != null) {
+    if (currentLaunch != null && upcomingLaunches != null != lastPreviousLaunch != null) {
       setHasFetchedData(true);
     }
-  }, [currentLaunch, upcomingLaunches]);
+  }, [currentLaunch, upcomingLaunches, lastPreviousLaunch]);
   
 
   const changeCurrentLaunch = (launch : any) => {
@@ -82,11 +83,11 @@ const today = new Date();
                     DAYS SINCE LAST LAUNCH
                 </div>
                 <div className="text-center py-4 flex flex-col">
-                  <p className="text-xl">{lastPreviousLaunch.rocket.configuration.full_name}</p>
-                  <Moment format="YYYY-MM-DD HH:SS" className="text-lg">{lastPreviousLaunch.net}</Moment>
+                  <p className="text-xl">{lastPreviousLaunch?.rocket.configuration.full_name}</p>
+                  <Moment format="YYYY-MM-DD HH:SS" className="text-lg">{lastPreviousLaunch?.net}</Moment>
                   <div>
-                    <Moment diff={lastPreviousLaunch.net} unit="days" className="text-3xl text-cyan-700">{today}</Moment>
-                    <span className="ml-1">{lastPreviousLaunch.net === 1 ? "day" : "days"} ago</span>
+                    <Moment diff={lastPreviousLaunch?.net} unit="days" className="text-3xl text-cyan-700">{today}</Moment>
+                    <span className="ml-1">{lastPreviousLaunch?.net === 1 ? "day" : "days"} ago</span>
                   </div>
                 </div>
             </div>
