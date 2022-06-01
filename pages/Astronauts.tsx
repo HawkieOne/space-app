@@ -1,44 +1,40 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { spaceAPI } from "../api/spaceDevsApi";
-import AstronautCard from "../components/AstronautCard";
-
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { spaceAPI } from '../api/spaceDevsApi'
+import AstronautCard from '../components/AstronautCard'
+import SkeletonListCard from '../components/shared/SkeletonLoader'
 
 export default function Astronauts() {
+  const [astronauts, setAstronauts] = useState<any>(null)
 
-  const [astronauts, setAstronauts] = useState<any>(null);
-
-  const [hasFetchedData, setHasFetchedData] = useState<any>(null);
+  const [hasFetchedData, setHasFetchedData] = useState<any>(null)
 
   useEffect(() => {
-    spaceAPI?.getAstronauts!().then((astronauts : any) => {
-      console.log(astronauts);
-      setAstronauts(astronauts.results);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }, []);
-  
+    spaceAPI?.getAstronauts!()
+      .then((astronauts: any) => {
+        console.log(astronauts)
+        setAstronauts(astronauts.results)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
+
   useEffect(() => {
     if (astronauts != null) {
-      setHasFetchedData(true);
+      setHasFetchedData(true)
     }
-  }, [astronauts]);
+  }, [astronauts])
 
   return (
     <motion.div layout className="bg-gray-900">
-      {hasFetchedData === true 
-      ?
-        astronauts.map((astronaut : any, index : any) => (
-          <AstronautCard 
-            key={astronaut.id} 
-            astronaut={astronaut}
-          />
-        ))
-        : null
-      }      
+      {hasFetchedData === true
+        ? astronauts.map((astronaut: any, index: any) => (
+            <AstronautCard key={astronaut.id} astronaut={astronaut} />
+          ))
+        : Array(0, 0, 0, 0).map((element, index) => {
+            return <SkeletonListCard key={index} />
+          })}
     </motion.div>
   )
 }
-
