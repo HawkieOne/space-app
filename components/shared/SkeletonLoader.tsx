@@ -3,7 +3,7 @@ import React from 'react'
 export default function SkeletonListCard() {
   return (
     <div className="m-8 flex flex-col items-center justify-center animate-pulse">
-      <div className="card flex h-60 w-3/4 rounded bg-skeletonLight shadow-md">
+      <div className="card flex h-60 w-full rounded bg-skeletonLight shadow-md">
         <div className="h-full w-64 rounded-l-sm bg-skeletonDark" />
         <div className="flex h-48 w-full flex-col ">
           <div className="flex-1 p-4 pb-0 space-y-4">
