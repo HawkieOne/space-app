@@ -26,7 +26,7 @@ export default function Events() {
 
   return (
     <div className="bg-gray-900">
-      
+
       {hasFetchedData == true ? (
         events.map((event: any, index: Number) => {
           return <ListCard key={index} event={event} />
