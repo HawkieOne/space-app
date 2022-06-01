@@ -30,13 +30,13 @@ export default function Main() {
       console.log(error);
     });
   }, []);
-  
+
   useEffect(() => {
     if (currentLaunch != null && upcomingLaunches != null != lastPreviousLaunch != null) {
       setHasFetchedData(true);
     }
   }, [currentLaunch, upcomingLaunches, lastPreviousLaunch]);
-  
+
 
   const changeCurrentLaunch = (launch : any) => {
     setCurrentLaunch(launch);
@@ -48,7 +48,7 @@ const today = new Date();
     <div>
       {hasFetchedData == true ?
         <div className="h-full w-full flex flex-col justify-start items-center space-y-8 p-4 bg-gray-900">
-          <div className="w-full flex gap-8 justify-center max-w-7xl"> 
+          <div className="w-full flex gap-8 justify-center max-w-7xl">
 
             <div className="info-card px-6 py-1 divide-y divide-white w-fit">
                 <div className="text-center pt-2 text-red-300">
@@ -63,7 +63,7 @@ const today = new Date();
                   </div>
                 </div>
             </div>
-      
+
             <div className="info-card px-4 py-1 divide-y divide-white w-fit">
                 <div className="text-center pt-2 text-red-300">
                     CHOSEN LAUNCH
@@ -102,7 +102,7 @@ const today = new Date();
                   <div className="flex flex-col justify-around items-start space-y-4 my-4">
                     <p>{currentLaunch.name}</p>
                     <p>{currentLaunch.launch_service_provider.name}</p>
-                    <p>{currentLaunch.pad.location.name}</p>              
+                    <p>{currentLaunch.pad.location.name}</p>
                     <p>{currentLaunch.net}</p>
                   </div>
                 </div>
@@ -113,29 +113,29 @@ const today = new Date();
                   {upcomingLaunches!.map(( launch : any, index : number) => (
                     <div key={launch.index}>
                       {
-                        currentLaunch.id === launch.id 
+                        currentLaunch.id === launch.id
                         ?
-                        <div key={launch.id} className="flex flex-col space-y-2 p-2 bg-slate-500 cursor-pointer rounded-2xl"> 
+                        <div key={launch.id} className="flex flex-col space-y-2 p-2 bg-slate-500 cursor-pointer rounded-2xl">
                           <p>{launch.name}</p>
                         </div>
                         :
-                        <div key={launch.id} className="flex flex-col space-y-2 p-2 hover:bg-gray-900 hover:text-red-300 cursor-pointer rounded-2xl" onClick={() => changeCurrentLaunch(launch)}> 
+                        <div key={launch.id} className="flex flex-col space-y-2 p-2 hover:bg-gray-900 hover:text-red-300 cursor-pointer rounded-2xl" onClick={() => changeCurrentLaunch(launch)}>
                           <p>{launch.name}</p>
                         </div>
                       }
-                    </div>                  
+                    </div>
                   ))}
                 </div>
               </div>
 
-              
+
             <div className="current-card">
               <div className="h-full flex flex-col justify-center space-x-4">
                 <img src={currentLaunch.image} alt="" className="cropped-image rounded-t-2xl"/>
                 <div className="flex flex-col justify-around items-start space-y-4 my-4">
                   <p>{currentLaunch.name}</p>
                   <p>{currentLaunch.launch_service_provider.name}</p>
-                  <p>{currentLaunch.pad.location.name}</p>              
+                  <p>{currentLaunch.pad.location.name}</p>
                   <p>{currentLaunch.net}</p>
                 </div>
               </div>
@@ -146,7 +146,7 @@ const today = new Date();
         </div>
       :
       null
-    } 
+    }
     </div>
   )
 }
