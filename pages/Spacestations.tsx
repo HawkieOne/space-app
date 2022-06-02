@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { spaceAPI } from '../api/spaceDevsApi'
-import SkeletonListCard from '../components/shared/SkeletonLoader'
+import SkeletonListCard from '../components/shared/SkeletonListCard'
 import { customStyles } from '../shared/cssSelect'
 import {
   compareAZ,

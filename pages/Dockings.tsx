@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
-import SkeletonListCard from '../components/shared/SkeletonLoader'
+import SkeletonListCard from '../components/shared/SkeletonListCard'
 
 export default function Dockings() {
   const [dockings, setDockings] = useState<any>(null)
