@@ -15,13 +15,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
- <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com)  -->
+<div align="center">
+  <a href="https://hawkie.me"><img alt="Screenshot of app" src="wordle.png" /></a>
+</div>
 
-Space Wisdom fetches data from an API about happenings regarding human events in space. Some examples are:
+Have you ever wanted to see all the fun stuff thats happening in space exploration?
 
-* Information about past and future launches
-* Information about astronauts and spacecrafts
-* Information about other events regarding space
+Look no more because here is SpacQ, which gives you all the information about launches, spacecrafts, astronauts, expeditions and so much more.
+In the app you can browse between the different categories to find what you are searching for or just browser even more and learn new stuff.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -29,15 +31,13 @@ Space Wisdom fetches data from an API about happenings regarding human events in
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
-* [Firebase](https://firebase.google.com/)
+* [NextJS](https://nextjs.org/)
+* [Axios]([https://www.npmjs.com/package/react-hot-keys](https://axios-http.com/docs/intro))
+* [React Moment](https://www.npmjs.com/package/react-moment)
 * [Recoil](https://recoiljs.org/)
-* [Axios](https://www.npmjs.com/package/axios)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -52,12 +52,9 @@ Below is an example of how you can install and set up your app.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/HawkieOne/space-app.git
+   git clone https://github.com/HawkieOne/space-app
    ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+2. Compile and run the app
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -75,7 +72,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Håkan Lindahl - [/hakanlindahl](https://www.linkedin.com/in/h%C3%A5kan-lindahl-3a0427153/) - hakan.l.lindahl@gmail.com
 <br />
-Project Link: [https://github.com/HawkieOne/space-app.git](https://github.com/HawkieOne/space-app.git)
+Project Link: [https://github.com/HawkieOne/thirty](https://github.com/HawkieOne/space-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
