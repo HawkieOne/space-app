@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
 import AstronautCard from '../components/AstronautCard'
-import SkeletonListCard from '../components/shared/SkeletonLoader'
+import SkeletonListCard from '../components/shared/SkeletonListCard'
 
 export default function Astronauts() {
   const [astronauts, setAstronauts] = useState<any>(null)

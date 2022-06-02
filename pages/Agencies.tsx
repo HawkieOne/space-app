@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
 import AgencyCard from '../components/AgencyCard'
-import SkeletonListCard from '../components/shared/SkeletonLoader'
+import SkeletonListCard from '../components/shared/SkeletonListCard'
 
 export default function Agencies() {
   const [agencies, setAgencies] = useState<any>(null)
