@@ -1,15 +1,16 @@
+import Main from '../components/Main'
 import Head from 'next/head'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex flex-col w-full bg-gray-900">
       <Head>
         <title>Space app</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1>Space app</h1>
+      <main className="h-full w-full">
+        <Main />
       </main>
     </div>
   )
