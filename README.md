@@ -16,7 +16,7 @@
 ## About The Project
 
 <div align="center">
-  <a href="https://hawkie.me"><img alt="Screenshot of app" src="wordle.png" /></a>
+  <a href="https://hawkie.me"><img alt="Screenshot of app" src="spaceapp.png" /></a>
 </div>
 
 Have you ever wanted to see all the fun stuff thats happening in space exploration?
