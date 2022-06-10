@@ -8,11 +8,10 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-
-
 <!-- PROJECT LOGO -->
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <div align="center">
@@ -24,22 +23,20 @@ Have you ever wanted to see all the fun stuff thats happening in space explorati
 Look no more because here is SpacQ, which gives you all the information about launches, spacecrafts, astronauts, expeditions and so much more.
 In the app you can browse between the different categories to find what you are searching for or just browser even more and learn new stuff.
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 
-* [React.js](https://reactjs.org/)
-* [NextJS](https://nextjs.org/)
-* [Axios]([https://www.npmjs.com/package/react-hot-keys](https://axios-http.com/docs/intro))
-* [React Moment](https://www.npmjs.com/package/react-moment)
-* [Recoil](https://recoiljs.org/)
+- [React.js](https://reactjs.org/)
+- [NextJS](https://nextjs.org/)
+- [Axios](<[https://www.npmjs.com/package/react-hot-keys](https://axios-http.com/docs/intro)>)
+- [React Moment](https://www.npmjs.com/package/react-moment)
+- [Recoil](https://recoiljs.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 This is an instruction to setting up your project locally.
@@ -65,9 +62,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p> -->
 
-
-
 <!-- CONTACT -->
+
 ## Contact
 
 Håkan Lindahl - [/hakanlindahl](https://www.linkedin.com/in/h%C3%A5kan-lindahl-3a0427153/) - hakan.l.lindahl@gmail.com
@@ -76,10 +72,9 @@ Project Link: [https://github.com/HawkieOne/thirty](https://github.com/HawkieOne
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
