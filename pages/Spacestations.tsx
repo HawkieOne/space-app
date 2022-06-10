@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { spaceAPI } from '../api/spaceDevsApi'
 import SkeletonListCard from '../components/shared/SkeletonListCard'
+import SkeletonSpacestation from '../components/shared/SkeletonSpacestation'
+import Spacestation from '../components/Spacestation'
 import { customStyles } from '../shared/cssSelect'
 import {
   compareAZ,
@@ -91,48 +93,22 @@ export default function Spacestations() {
 
           <motion.div layout className="grid grid-cols-4 gap-6">
             {spacestations.map((spacestation: any, index: any) => (
-              <AnimatePresence>
-                <motion.div
-                  layout
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="cursor-pointer overflow-hidden rounded border-orange-600 bg-slate-800 shadow-lg hover:scale-105 hover:border-2"
-                  key={spacestation.id}
-                >
-                  <img
-                    className="max-h-52 w-full bg-white"
-                    src={spacestation.image_url}
-                    alt="River"
-                  />
-                  <div className="px-4 py-2">
-                    <div className="mb-2 text-lg font-bold text-white">
-                      {spacestation.name}
-                    </div>
-                    <p className="text-base text-gray-700">
-                      {/* {spacestation.description} */}
-                    </p>
-                  </div>
-                  <div className="px-4 pt-2 pb-2">
-                    {spacestation.deorbited !== null ? (
-                      <span className="mr-2 mb-2 inline-block rounded-full bg-gray-900 px-3 py-1 text-sm font-semibold text-red-700">
-                        Deorbited
-                      </span>
-                    ) : (
-                      <span className="mr-2 mb-2 inline-block rounded-full bg-gray-900 px-3 py-1 text-sm font-semibold text-green-700">
-                        In orbit
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+              <Spacestation
+                spacestation={spacestation}
+                key={index}
+                index={index}
+              />
             ))}
           </motion.div>
         </div>
       ) : (
-        Array(0, 0, 0, 0).map((element, index) => {
-          return <SkeletonListCard key={index} />
-        })
+        <div className="grid grid-cols-4 gap-6 p-6">            
+          {Array(0, 0, 0).map((element, index) => {
+            return Array(0, 0, 0, 0).map((element, index) => {
+              return <SkeletonSpacestation key={index} />
+            })
+          })}
+        </div>
       )}
     </div>
   )
