@@ -102,7 +102,7 @@ export default function Spacestations() {
           </motion.div>
         </div>
       ) : (
-        <div className="grid grid-cols-4 gap-6 p-6">            
+        <div className="grid grid-cols-4 gap-6 p-6">
           {Array(0, 0, 0).map((element, index) => {
             return Array(0, 0, 0, 0).map((element, index) => {
               return <SkeletonSpacestation key={index} />
