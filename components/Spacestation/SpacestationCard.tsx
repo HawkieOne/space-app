@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import React from 'react'
 
-export default function Spacestation({ spacestation, index} : any) {
+export default function SpacestationCard({ spacestation, index} : any) {
   return (
     <AnimatePresence>
       <motion.div
@@ -9,7 +9,7 @@ export default function Spacestation({ spacestation, index} : any) {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
-        className="cursor-pointer overflow-hidden rounded border-orange-600 bg-slate-800 shadow-lg hover:scale-105 hover:border-2"
+        className="cursor-pointer overflow-hidden rounded bg-slate-800 shadow-lg hover:scale-105 hover:bg-spaceTealHover"
         key={spacestation.id}
       >
         <img

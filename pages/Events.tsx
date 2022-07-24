@@ -1,41 +1,52 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import ListCard from '../components/ListCard'
+import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
-import SkeletonListCard from '../components/shared/SkeletonListCard'
+import EventCard from '../components/Event/EventCard'
+import ContentModal from '../components/shared/ContentModal'
+import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
+import SubPage from '../components/shared/SubPage'
+import { ApiResponse, Event } from '../shared/interfaces'
 
 export default function Events() {
-  const [events, setEvents] = useState<any>(null)
-  const [hasFetchedData, setHasFetchedData] = useState<boolean>(false)
+  const [events, setEvents] = useState<Event[] | null>(null)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     spaceAPI?.getEvents!()
-      .then((events: any) => {
-        setEvents(events.results)
+      .then((res: ApiResponse) => {
+        console.log(res)
+        setEvents(res.results)
+        // if (res.next) {
+        //   spaceAPI?.getEvents!(res.next)
+        //     .then((res: ApiResponse) => {
+        //       setEvents(events =>  events && [...events, res.results]);
+        //     })
+        //     .catch((error) => {
+        //       console.log(error)
+        //     })
+        // }
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  useEffect(() => {
-    if (events != null) {
-      setHasFetchedData(true)
-    }
-  }, [events])
-
   return (
-    <div className="bg-gray-900">
-
-      {hasFetchedData == true ? (
-        events.map((event: any, index: Number) => {
-          return <ListCard key={index} event={event} />
+    <SubPage title="Events">
+      {events ? (
+        events.map((event: Event, index: number) => {
+          return <EventCard key={index} event={event} onClick={() => setShowModal(true)}/>
         })
       ) : (
-        Array(0,0,0,0).map((element, index) => {
-          return <SkeletonListCard key={index} />
-        })
+        <SkeletonCardList />
       )}
-    </div>
+
+      {showModal && (
+            <ContentModal 
+                onOutsideClick={() => setShowModal(false)}
+            >
+                
+            </ContentModal>
+      )}
+    </SubPage>
   )
 }

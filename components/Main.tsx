@@ -1,12 +1,10 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
-import DashboardTabber from './DashboardTabber'
-import { spaceAPI } from '../api/spaceDevsApi'
 import Moment from 'react-moment'
-import SkeletonCard from './shared/SkeletonCard'
-import SkeletonListMain from './shared/SkeletonListMain'
-import SkeletonLaunchCard from './shared/SkeletonLaunchCard'
+import { spaceAPI } from '../api/spaceDevsApi'
 import InfoCard from './shared/InfoCard'
+import SkeletonCard from "./shared/skeletons/SkeletonCard"
+import SkeletonLaunchCard from './shared/skeletons/SkeletonLaunchCard'
+import SkeletonListMain from './shared/skeletons/SkeletonListMain'
 
 export default function Main() {
   const [currentLaunch, setCurrentLaunch] = useState<any>(null)

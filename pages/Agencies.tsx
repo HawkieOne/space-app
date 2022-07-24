@@ -1,39 +1,32 @@
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
-import AgencyCard from '../components/AgencyCard'
-import SkeletonListCard from '../components/shared/SkeletonListCard'
+import AgencyCard from '../components/Agency/AgencyCard'
+import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
+import SubPage from '../components/shared/SubPage'
+import { Agency, ApiResponse } from '../shared/interfaces'
 
 export default function Agencies() {
-  const [agencies, setAgencies] = useState<any>(null)
-
-  const [hasFetchedData, setHasFetchedData] = useState<any>(null)
+  const [agencies, setAgencies] = useState<Agency[] | null>(null)
 
   useEffect(() => {
     spaceAPI?.getAgencies!()
-      .then((agencies: any) => {
-        console.log(agencies.results)
-        setAgencies(agencies.results)
+      .then((res: ApiResponse) => {
+        setAgencies(res.results)
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  useEffect(() => {
-    if (agencies != null) {
-      setHasFetchedData(true)
-    }
-  }, [agencies])
-
   return (
-    <div className="bg-gray-900">
-      {hasFetchedData === true
-        ? agencies.map((agency: any, index: any) => (
-            <AgencyCard key={agency.id} agency={agency} />
-          ))
-        : Array(0, 0, 0, 0).map((element, index) => {
-            return <SkeletonListCard key={index} />
-          })}
-    </div>
+    <SubPage title="Agencies">
+      {agencies ? (
+        agencies.map((agency: Agency, index) => (
+          <AgencyCard key={agency.id} agency={agency} />
+        ))
+      ) : (
+        <SkeletonCardList />
+      )}
+    </SubPage>
   )
 }

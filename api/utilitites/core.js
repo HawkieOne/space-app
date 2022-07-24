@@ -14,8 +14,8 @@ export class ApiCore {
         }
 
         if (options.events) {
-            this.getEvents = () => {
-                return apiProvider.getEvents();
+            this.getEvents = (link) => {
+                return apiProvider.getEvents(link);
             }
         }
 

@@ -16,7 +16,14 @@ const getPreviousLaunches = () => {
         .catch(handleError); 
 }
 
-const getEvents = () => {
+const getEvents = (link) => {
+    console.log(link);
+    if (link) {
+        return axios
+        .get(link)
+        .then(handleResponse) 
+        .catch(handleError); 
+    }
     return axios
         .get(`${BASE_URL}event/upcoming`)
         .then(handleResponse) 

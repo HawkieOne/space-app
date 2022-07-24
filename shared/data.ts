@@ -42,3 +42,17 @@ export const navLinks = [
         path: "/Locations",
     },
   ];
+
+
+export const SORT_OLD = 'old';
+export const SORT_NEW = 'new';
+export const SORT_AZ = 'a-z';
+export const SORT_ZA = 'z-a';
+
+export const optionsSpaceStations = [
+    { value: SORT_OLD, label: 'OIdest first' },
+    { value: SORT_NEW, label: 'Newest first' },
+    { value: SORT_AZ, label: 'A-Z' },
+    { value: SORT_ZA, label: 'Z-A' },
+  ]
+  
