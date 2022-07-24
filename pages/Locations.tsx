@@ -1,38 +1,34 @@
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
-import SkeletonListCard from '../components/shared/SkeletonListCard'
+import LocationCard from '../components/Location/LocationCard'
+import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
+import SubPage from '../components/shared/SubPage'
+import { ApiResponse, Location } from '../shared/interfaces'
 
 export default function Locations() {
-  const [locations, setLocations] = useState<any>(null)
+  const [locations, setLocations] = useState<Location[] | null>(null)
 
-  const [hasFetchedData, setHasFetchedData] = useState<any>(null)
 
   useEffect(() => {
     spaceAPI?.getLocations!()
-      .then((spacestations: any) => {
-        console.log(spacestations)
-        setLocations(spacestations.results)
+      .then((res: ApiResponse) => {
+        console.log(res)
+        setLocations(res.results)
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  useEffect(() => {
-    if (locations != null) {
-      setHasFetchedData(true)
-    }
-  }, [locations])
-
   return (
-    <div className="bg-gray-900">
-      {hasFetchedData === true ? (
-        <div className="m-6 grid grid-cols-4 gap-6"></div>
+    <SubPage title="Locations">
+      {locations ? (
+        locations.map((location : Location, index : number) => (
+            <LocationCard key={index} location={location} />
+        ))
       ) : (
-        Array(0, 0, 0, 0).map((element, index) => {
-          return <SkeletonListCard key={index} />
-        })
+        <SkeletonCardList />
       )}
-    </div>
+    </SubPage>
   )
 }

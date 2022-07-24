@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
-import SkeletonListCard from '../components/shared/SkeletonListCard'
+import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
+import SubPage from '../components/shared/SubPage'
+import SpacecraftCard from '../components/Spacecraft/SpacecraftCard'
+import { Spacecraft } from '../shared/interfaces'
 
 export default function Spacecrafts() {
-  const [spacecrafts, setSpacecrafts] = useState<any>(null)
-
-  const [hasFetchedData, setHasFetchedData] = useState<any>(null)
+  const [spacecrafts, setSpacecrafts] = useState<Spacecraft[] | null>(null)
 
   useEffect(() => {
     spaceAPI?.getSpacecrafts!()
@@ -18,21 +19,15 @@ export default function Spacecrafts() {
       })
   }, [])
 
-  useEffect(() => {
-    if (spacecrafts != null) {
-      setHasFetchedData(true)
-    }
-  }, [spacecrafts])
-
   return (
-    <div className="bg-gray-900">
-      {hasFetchedData === true ? (
-        <div className="m-6 grid grid-cols-4 gap-6"></div>
+    <SubPage title="Spacecrafts">
+      {spacecrafts ? (
+        spacecrafts.map((spacecraft : Spacecraft, index) => (
+            <SpacecraftCard key={index} spacecraft={spacecraft} />
+        ))
       ) : (
-        Array(0, 0, 0, 0).map((element, index) => {
-          return <SkeletonListCard key={index} />
-        })
+        <SkeletonCardList />
       )}
-    </div>
+    </SubPage>
   )
 }
