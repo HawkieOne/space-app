@@ -21,13 +21,10 @@ export default function Spacecrafts() {
 
   return (
     <SubPage title="Spacecrafts">
-      {spacecrafts ? (
-        spacecrafts.map((spacecraft : Spacecraft, index) => (
-            <SpacecraftCard key={index} spacecraft={spacecraft} />
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+      {spacecrafts &&
+        spacecrafts.map((spacecraft: Spacecraft, index) => (
+          <SpacecraftCard key={index} spacecraft={spacecraft} />
+        ))}
     </SubPage>
   )
 }

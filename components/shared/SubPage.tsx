@@ -1,16 +1,19 @@
-import PageTitle from "./PageTitle"
+import CircleLoadingIndicator from './CircleLoadingIndicator'
+import PageTitle from './PageTitle'
 
 type SubPageProps = {
-    title: string,
-    children: React.ReactNode,
+  title: string
+  children: React.ReactNode
 }
 
-export default function SubPage({ title, children } : SubPageProps) {
-
+export default function SubPage({
+  title,
+  children,
+}: SubPageProps) {
   return (
-    <div className=" bg-gray-900 space-y-8 p-4 flex flex-col items-center">
+    <div className="h-full flex flex-col items-center space-y-8 bg-gray-900 p-4">
       <PageTitle title={title} />
-      {children}
+      {children ? children : <CircleLoadingIndicator />}
     </div>
   )
 }

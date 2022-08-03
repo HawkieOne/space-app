@@ -6,8 +6,9 @@ import SubPage from '../components/shared/SubPage'
 import { ApiResponse, LaunchVehicle } from '../shared/interfaces'
 
 export default function LaunchVehicles() {
-  const [launchVehicles, setLaunchVehicles] = useState<LaunchVehicle[] | null>(null)
-
+  const [launchVehicles, setLaunchVehicles] = useState<LaunchVehicle[] | null>(
+    null
+  )
 
   useEffect(() => {
     spaceAPI?.getLaunchVehicles!()
@@ -20,16 +21,12 @@ export default function LaunchVehicles() {
       })
   }, [])
 
-
   return (
     <SubPage title="Launch Vehicles">
-      {launchVehicles ? (
-        launchVehicles.map((launchVehicle : LaunchVehicle, index) => (
-            <LaunchVehicleCard key={index} launchVehicle={launchVehicle} />
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+      {launchVehicles &&
+        launchVehicles.map((launchVehicle: LaunchVehicle, index) => (
+          <LaunchVehicleCard key={index} launchVehicle={launchVehicle} />
+        ))}
     </SubPage>
   )
 }

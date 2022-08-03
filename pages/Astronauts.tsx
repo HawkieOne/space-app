@@ -20,13 +20,10 @@ export default function Astronauts() {
 
   return (
     <SubPage title="Astronauts">
-      {astronauts ? (
+      {astronauts &&
         astronauts.map((astronaut: Astronaut, index) => (
           <AstronautCard key={astronaut.id} astronaut={astronaut} />
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+        ))}
     </SubPage>
   )
 }

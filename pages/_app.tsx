@@ -6,15 +6,12 @@ import Footer from '../components/shared/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex flex-col h-screen w-full bg-gray-900">
+    <div className="h-screen w-full flex flex-col bg-gray-900">
     <header>
       <Header />
     </header>
     <DashboardTabber />
     <Component {...pageProps} />
-    <footer>
-        <Footer />
-    </footer>
   </div>
   )  
 }

@@ -8,7 +8,6 @@ import { ApiResponse, Expedition } from '../shared/interfaces'
 export default function Expeditions() {
   const [expeditions, setExpeditions] = useState<Expedition[] | null>(null)
 
-
   useEffect(() => {
     spaceAPI?.getExpeditions!()
       .then((res: ApiResponse) => {
@@ -22,13 +21,10 @@ export default function Expeditions() {
 
   return (
     <SubPage title="Expeditions">
-      {expeditions ? (
-        expeditions.map((expedition : Expedition, index : number) => (
-            <ExpeditionCard key={expedition.id} expedition={expedition} />
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+      {expeditions &&
+        expeditions.map((expedition: Expedition, index: number) => (
+          <ExpeditionCard key={expedition.id} expedition={expedition} />
+        ))}
     </SubPage>
   )
 }

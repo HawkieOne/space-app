@@ -8,7 +8,6 @@ import { ApiResponse, Location } from '../shared/interfaces'
 export default function Locations() {
   const [locations, setLocations] = useState<Location[] | null>(null)
 
-
   useEffect(() => {
     spaceAPI?.getLocations!()
       .then((res: ApiResponse) => {
@@ -22,13 +21,10 @@ export default function Locations() {
 
   return (
     <SubPage title="Locations">
-      {locations ? (
-        locations.map((location : Location, index : number) => (
-            <LocationCard key={index} location={location} />
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+      {locations &&
+        locations.map((location: Location, index: number) => (
+          <LocationCard key={index} location={location} />
+        ))}
     </SubPage>
   )
 }

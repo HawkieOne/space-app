@@ -32,20 +32,19 @@ export default function Events() {
 
   return (
     <SubPage title="Events">
-      {events ? (
+      {events &&
         events.map((event: Event, index: number) => {
-          return <EventCard key={index} event={event} onClick={() => setShowModal(true)}/>
-        })
-      ) : (
-        <SkeletonCardList />
-      )}
+          return (
+            <EventCard
+              key={index}
+              event={event}
+              onClick={() => setShowModal(true)}
+            />
+          )
+        })}
 
       {showModal && (
-            <ContentModal 
-                onOutsideClick={() => setShowModal(false)}
-            >
-                
-            </ContentModal>
+        <ContentModal onOutsideClick={() => setShowModal(false)}>Hello</ContentModal>
       )}
     </SubPage>
   )

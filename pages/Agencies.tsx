@@ -19,13 +19,11 @@ export default function Agencies() {
   }, [])
 
   return (
-    <SubPage title="Agencies">
-      {agencies ? (
-        agencies.map((agency: Agency, index) => (
+    <SubPage title="Agencies" >
+      {agencies && (
+        agencies.map((agency: Agency) => (
           <AgencyCard key={agency.id} agency={agency} />
         ))
-      ) : (
-        <SkeletonCardList />
       )}
     </SubPage>
   )

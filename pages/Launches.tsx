@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { spaceAPI } from "../api/spaceDevsApi";
-import InfoCard from "../components/shared/InfoCard";
+import MomentTimeCard from "../components/shared/MomentTimeCard";
 export default function Launches() {
 
   const [currentLaunch, setCurrentLaunch] = useState<any>(null);
@@ -85,14 +85,14 @@ export default function Launches() {
                 </div>
 
                 <div className="flex flex-row">
-                  <InfoCard className='basis-1/4' header='ROCKET'>
+                  <MomentTimeCard className='basis-1/4' header='ROCKET'>
                     <p>
                       <span className="text-gray-500">Name: </span>
                       {currentLaunch.rocket.configuration.name}
                     </p>
-                  </InfoCard>
+                  </MomentTimeCard>
 
-                  <InfoCard className='basis-1/4' header='COMPANY'>
+                  <MomentTimeCard className='basis-1/4' header='COMPANY'>
                     <p>
                       <span className="text-gray-500">Name: </span>
                       {currentLaunch.launch_service_provider.name}
@@ -101,9 +101,9 @@ export default function Launches() {
                       <span className="text-gray-500">Type: </span>
                       {currentLaunch.launch_service_provider.type}
                     </p>
-                  </InfoCard>
+                  </MomentTimeCard>
 
-                  <InfoCard className='basis-1/4' header='MISSION'>
+                  <MomentTimeCard className='basis-1/4' header='MISSION'>
                     <p>
                       <span className="text-gray-500">Name: </span>
                       {currentLaunch.mission?.name ? currentLaunch.mission?.name : 'Not found'}
@@ -116,9 +116,9 @@ export default function Launches() {
                       <span className="text-gray-500">Purpose: </span>
                       {currentLaunch.mission?.description ? currentLaunch.mission?.description : 'Not found'}
                     </p>
-                  </InfoCard>
+                  </MomentTimeCard>
 
-                  <InfoCard className='basis-1/4' header='LAUNCH LOCATION'>
+                  <MomentTimeCard className='basis-1/4' header='LAUNCH LOCATION'>
                     <p>
                       <span className="text-gray-500">Name: </span>
                       <a href={currentLaunch.pad.map_url} target='_blank' rel="noreferrer noopener">
@@ -133,7 +133,7 @@ export default function Launches() {
                       <span className="text-gray-500">Launch count: </span>
                       {currentLaunch.pad.location.name ? currentLaunch.pad.location.total_launch_count : null}
                     </p>
-                  </InfoCard>
+                  </MomentTimeCard>
                 </div>
               </div>
             </div>

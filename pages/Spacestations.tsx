@@ -47,18 +47,17 @@ export default function Spacestations() {
   }
 
   const sortSpaceStations = (sortMethod: any) => {
-
-    setSpacestations(spacestations!.sort(sortMethod));
+    setSpacestations(spacestations!.sort(sortMethod))
   }
 
   const sortTest = (a: Spacestation, b: Spacestation) => {
-    if ( a.name < b.name ){
-        return -1;
+    if (a.name < b.name) {
+      return -1
     }
-    if ( a.name > b.name ){
-        return 1;
+    if (a.name > b.name) {
+      return 1
     }
-    return 0;
+    return 0
   }
 
   useEffect(() => {
@@ -76,7 +75,7 @@ export default function Spacestations() {
 
   return (
     <SubPage title="Spacestations">
-      {spacestations ? (
+      {spacestations && (
         <div className="flex flex-col space-y-6 p-6">
           <CustomSelect
             options={optionsSpaceStations}
@@ -92,14 +91,6 @@ export default function Spacestations() {
               />
             ))}
           </motion.div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-4 gap-6 p-6">
-          {Array(0, 0, 0).map((_) => {
-            return Array(0, 0, 0, 0).map((_, index) => {
-              return <SkeletonSpacestation key={index} />
-            })
-          })}
         </div>
       )}
     </SubPage>

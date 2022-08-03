@@ -20,14 +20,11 @@ export default function Dockings() {
   }, [])
 
   return (
-    <SubPage title="Dockings" >
-      {dockings? (
-        dockings.map((docking : Docking, index : Key) => (
-            <DockingCard docking={docking} key={index}/>
-        ))
-      ) : (
-        <SkeletonCardList />
-      )}
+    <SubPage title="Dockings">
+      {dockings &&
+        dockings.map((docking: Docking, index: Key) => (
+          <DockingCard docking={docking} key={index} />
+        ))}
     </SubPage>
   )
 }
