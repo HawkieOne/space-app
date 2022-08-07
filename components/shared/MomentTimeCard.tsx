@@ -1,6 +1,8 @@
 import React from 'react'
 import Moment from 'react-moment'
 import { Launch } from '../../shared/interfaces'
+import LargeText from './Text/LargeText'
+import SmallText from './Text/SmallText'
 
 const TODAY = new Date()
 
@@ -22,25 +24,35 @@ export default function MomentTimeCard({
   return (
     <div
       className={
-        'info-card w-fit divide-y divide-white rounded-lg px-6 py-1 ' +
+        'flex flex-col rounded-lg bg-spacePrimary px-6 py-1 text-white shadow-lg ' +
+        'px-3 py-4 space-y-4' +
         className
       }
     >
-      <h1 className="pt-2 text-center text-red-300 xl:text-3xl">{title}</h1>
-      <div className="flex flex-col py-4 xl:text-xl">
-        <p className="text-xl xl:text-3xl">{launch.rocket.full_name}</p>
-        <Moment format="YYYY-MM-DD HH:SS" className="text-lg xl:text-2xl">
-          {launch.net}
-        </Moment>
-        <div>
-          <Moment diff={TODAY} unit="days" className={`text-3xl ${dayColor}`}>
+      <h1 className="text-center text-lg text-spaceTealHover laptop:text-xl desktop:text-3xl">
+        {title}
+      </h1>
+      <div className="text-md laptop:text-md desktop:text-xl flex flex-col">
+        <div className="self-center">
+          <SmallText text={launch.rocket.full_name} />
+        </div>
+        <div className="flex justify-between">
+          <LargeText text="Date" />
+          <Moment format="YYYY-MM-DD HH:SS" className="text-lg desktop:text-xl">
             {launch.net}
           </Moment>
-          <span className="ml-1 xl:text-3xl">
-            {new Date(launch.net).getDay() === (1 | 0) ? 'day' : 'days'} 
-            {hasLaunchHappened ? " from " : " to "}
-            launch
-          </span>
+        </div>
+        <div className="flex justify-between items-center">
+          <LargeText
+            text={`Days ${hasLaunchHappened ? ' since ' : ' to '} launch: `}
+          />
+          <Moment
+            diff={TODAY}
+            unit="days"
+            className={`text-lg laptop:text-3xl ${dayColor}`}
+          >
+            {launch.net}
+          </Moment>
         </div>
       </div>
     </div>

@@ -18,10 +18,10 @@ export default function EventCard({ event, onClick }: EventCardProps) {
       />
       <div className="flex w-full flex-col justify-start space-y-2">
         <div className="flex space-x-2">
-          <h3 className="mb-1 font-light uppercase text-teal-500 text-lg xl:text-2xl">
+          <h3 className="mb-1 font-light uppercase text-teal-500 text-md xl:text-2xl">
             {event?.type.name}
           </h3>
-          <h2 className="mb-1 font-light uppercase text-fuchsia-500 text-lg xl:text-2xl">
+          <h2 className="mb-1 font-light uppercase text-fuchsia-500 text-md latop:text-md">
             {new Date(event?.date).toLocaleString()}
           </h2>
         </div>
@@ -39,7 +39,7 @@ export default function EventCard({ event, onClick }: EventCardProps) {
         </div>
         <span className="text-grey-darkest text-4xl xl:text-5xl">{event?.name}</span>
         <div className="flex items-center">
-          <div className="pr-2 text-xs xl:text-toLocaleString">
+          <div className="pr-2 text-xs xl:text-lg">
             <i className="fas fa-wifi text-green"></i> {event?.description}
           </div>
         </div>

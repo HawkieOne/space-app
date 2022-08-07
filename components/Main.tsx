@@ -1,20 +1,25 @@
 import { useEffect, useState } from 'react'
-import Moment from 'react-moment'
 import { spaceAPI } from '../api/spaceDevsApi'
+import { compareDateToToday } from '../shared/dateMethods'
 import { Launch } from '../shared/interfaces'
-import CircleLoadingIndicator from './shared/CircleLoadingIndicator'
-import Footer from './shared/Footer'
+import Box from './shared/Box'
+import Divider from './shared/Divider'
+import RadioGroupLaunchesList from './shared/RadioGroupList'
+import SubPage from './shared/SubPage'
+import InfoRow from './shared/Text/InfoRow'
+import { Tab } from '@headlessui/react'
 import MomentTimeCard from './shared/MomentTimeCard'
-import SkeletonCard from './shared/skeletons/SkeletonCard'
-import SkeletonLaunchCard from './shared/skeletons/SkeletonLaunchCard'
-import SkeletonListMain from './shared/skeletons/SkeletonListMain'
+
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Main() {
   const [currentLaunch, setCurrentLaunch] = useState<Launch | null>(null)
   const [upcomingLaunches, setUpcomingLaunches] = useState<Launch[] | null>(
     null
   )
-  const [lastPreviousLaunch, setLastPreviousLaunch] = useState<Launch | null>(
+  const [previousLaunches, setPreviousLaunches] = useState<Launch[] | null>(
     null
   )
 
@@ -30,84 +35,144 @@ export default function Main() {
 
     spaceAPI?.getPreviousLaunches!()
       .then((prevLaunches: any) => {
-        setLastPreviousLaunch(prevLaunches.results[0])
+        setPreviousLaunches(prevLaunches.results)
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  const changeCurrentLaunch = (launch: Launch) => {
-    setCurrentLaunch(launch)
-  }
-
   return (
-    <div className="h-full w-full">
-      {currentLaunch && upcomingLaunches && lastPreviousLaunch ? (
-        <div
-          className="flex h-full w-full flex-col items-center justify-start space-y-8 bg-gray-900 p-4 
-                        xl:space-y-16"
-        >
-          <div className="flex w-full justify-center gap-8">
-            <MomentTimeCard title="NEXT LAUNCH" launch={upcomingLaunches[0]} />
-            <MomentTimeCard title="CHOSEN LAUNCH" launch={currentLaunch} />
-            <MomentTimeCard
-              title="DAYS SINCE LAST LAUNCH"
-              launch={lastPreviousLaunch}
-              hasLaunchHappened
-            />
-          </div>
-
-          <div className="flex xl:space-x-12">
-            <div
-              className="flex h-full flex-col justify-center space-x-4 divide-y 
-                          rounded-2xl bg-gray-800 text-white"
+    <SubPage title="Launches">
+      {currentLaunch && upcomingLaunches && previousLaunches && (
+        <div className="flex h-full w-full items-center justify-center bg-gray-900 p-4">
+          <div className="max-h-2/4 flex w-full justify-around">
+            <Box
+              padding="px-6 py-3"
+              spaceY="space-y-4"
+              flex="flex items-center"
+              styles="flex basis-1/3 flex-col rounded-lg bg-gray-800 text-white"
             >
-              <div className="flex items-center justify-center p-4">
-                <img
-                  src={currentLaunch.image}
-                  alt=""
-                  className="h-96 rounded-lg object-cover shadow-2xl"
+              <>
+                <div className="flex justify-center">
+                  <img
+                    src={currentLaunch.image}
+                    alt="Current launch"
+                    className="h-96 rounded-lg shadow-2xl"
+                  />
+                </div>
+                <Divider color="bg-spaceLightGrey" opacity={true} />
+                <InfoRow title={'Name'} info={currentLaunch.name} />
+                <InfoRow
+                  title={'Company'}
+                  info={currentLaunch.launch_service_provider.name}
                 />
-              </div>
-              <div className="flex flex-col items-start justify-around space-y-4 py-4 px-6 xl:text-3xl">
-                <p>{currentLaunch.name}</p>
-                <p>{currentLaunch.launch_service_provider.name}</p>
-                <p>{currentLaunch.pad.location.name}</p>
-                <p>{currentLaunch.net}</p>
-              </div>
+                <InfoRow
+                  title={'Type'}
+                  info={currentLaunch.launch_service_provider.type}
+                />
+                <InfoRow
+                  title={'Location'}
+                  info={currentLaunch.pad.location.name}
+                />
+                <InfoRow
+                  title={'Launch date'}
+                  info={new Date(currentLaunch.net).toLocaleString()}
+                  infoColor={
+                    compareDateToToday(new Date(currentLaunch.net))
+                      ? 'text-blue-500'
+                      : 'text-red-400'
+                  }
+                />
+              </>
+            </Box>
+
+            <div className="basis-1/4 rounded-2xl bg-gray-800 px-2 py-2 text-white">
+              <Tab.Group>
+                <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+                  <Tab
+                    key={1}
+                    className={({ selected }) =>
+                      classNames(
+                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-spaceTitle focus:outline-none focus:ring-2',
+                        selected
+                          ? 'bg-spaceTealHover shadow'
+                          : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      )
+                    }
+                  >
+                    Upcoming
+                  </Tab>
+                  <Tab
+                    key={2}
+                    className={({ selected }) =>
+                      classNames(
+                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-spaceTitle focus:outline-none focus:ring-2',
+                        selected
+                          ? 'bg-spaceTealHover shadow'
+                          : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      )
+                    }
+                  >
+                    Previous
+                  </Tab>
+                </Tab.List>
+                <Tab.Panels className="mt-2">
+                  <Tab.Panel
+                    key={3}
+                    className={classNames(
+                      'rounded-xl p-3',
+                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                    )}
+                  >
+                    <RadioGroupLaunchesList
+                      values={upcomingLaunches}
+                      startValue={upcomingLaunches[0]}
+                      onChange={(launch) => setCurrentLaunch(launch)}
+                    />
+                  </Tab.Panel>
+                  <Tab.Panel
+                    key={4}
+                    className={classNames(
+                      'rounded-xl p-3',
+                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                    )}
+                  >
+                    <RadioGroupLaunchesList
+                      values={previousLaunches}
+                      startValue={upcomingLaunches[0]}
+                      onChange={(launch) => setCurrentLaunch(launch)}
+                    />
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group>
             </div>
 
-            <div className="rounded-2xl bg-gray-800 px-2 py-2 text-white">
-              {upcomingLaunches!.map((launch: any, index: number) => (
-                <div key={launch.index}>
-                  {currentLaunch.id === launch.id ? (
-                    <div
-                      key={launch.id}
-                      className="flex cursor-pointer flex-col space-y-2 rounded-2xl bg-slate-500 p-2"
-                    >
-                      <p>{launch.name}</p>
-                    </div>
-                  ) : (
-                    <div
-                      key={launch.id}
-                      className="flex cursor-pointer flex-col space-y-2 rounded-2xl p-2 hover:bg-gray-900 hover:text-red-300"
-                      onClick={() => changeCurrentLaunch(launch)}
-                    >
-                      <p>{launch.name}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div className="basis-1/4 rounded-2xl bg-gray-800 flex flex-col space-y-4 p-3">
+              <MomentTimeCard 
+                title="Next launch"
+                launch={upcomingLaunches[0]}
+              />
+              <MomentTimeCard 
+                title="Previous launch"
+                launch={previousLaunches[0]}
+                hasLaunchHappened={true}
+              />
+              <MomentTimeCard 
+                title="Next launch"
+                launch={upcomingLaunches[0]}
+              />
+              <MomentTimeCard 
+                title="Previous launch"
+                launch={previousLaunches[0]}
+                hasLaunchHappened={true}
+              />              
             </div>
           </div>
         </div>
-      ) : (
-        <CircleLoadingIndicator />
       )}
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+    </SubPage>
   )
 }
