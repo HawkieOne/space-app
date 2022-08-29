@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
 import EventCard from '../components/Event/EventCard'
 import ContentModal from '../components/shared/ContentModal'
-import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
 import SubPage from '../components/shared/SubPage'
 import { ApiResponse, Event } from '../shared/interfaces'
 
@@ -38,7 +37,7 @@ export default function Events() {
             <EventCard
               key={index}
               event={event}
-              onClick={() => setShowModal(true)}
+              onClick={() => {}}
             />
           )
         })}

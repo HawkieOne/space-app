@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div className="flex h-full w-full flex-col bg-gray-900">
       <Head>
         <title>SpacQ</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/space.ico" />
       </Head>
       <header>
         <Header />
