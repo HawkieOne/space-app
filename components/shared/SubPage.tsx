@@ -11,7 +11,7 @@ export default function SubPage({
   children,
 }: SubPageProps) {
   return (
-    <div className="h-full flex flex-col items-center space-y-4 bg-gray-900 p-4">
+    <div className="h-fit flex flex-col items-center space-y-4 bg-gray-900 p-4">
       <PageTitle title={title} />
       {children ? children : <CircleLoadingIndicator />}
     </div>

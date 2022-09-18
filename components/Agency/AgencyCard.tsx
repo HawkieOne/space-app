@@ -1,5 +1,6 @@
 import { Agency } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import ExportBox from '../shared/ExportBox'
 
 type AgencyCardProps = {
   agency: Agency
@@ -37,6 +38,7 @@ export default function AgencyCard({ agency }: AgencyCardProps) {
             </div>
           </div>
         </div>
+        <ExportBox fileName={agency.name} data={agency} />
       </div>
     </Card>
   )

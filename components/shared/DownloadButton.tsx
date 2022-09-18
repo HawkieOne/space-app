@@ -5,7 +5,7 @@ import IconButton from './IconButton'
 type DownloadButtonProps = {
   onClick?: () => void
   data: any
-  fileType: 'json' | 'txt' | 'xml'
+  fileType: 'json' | 'xml'
   fileName: string
 }
 
@@ -19,15 +19,9 @@ export default function DownloadButton({
     <IconButton
       onClick={() => {
         onClick && onClick()
-        if (fileType === 'json') {
-          const fileJSON = JSON.stringify(data)
-          fileDownload(fileJSON, `${fileName}.${fileType}`)
-        } else if (fileType === 'txt') {
-          fileDownload(data.toString(), `${fileName}.${fileType}`)
-        } else if (fileType === 'xml') {
-          const fileXML = JSON.stringify(data)
-          fileDownload(fileXML, `${fileName}.${fileType}`)
-        }
+        console.log(data)
+        const file = JSON.stringify(data)
+        fileDownload(file, `${fileName}.${fileType}`)
       }}
     >
       <svg
