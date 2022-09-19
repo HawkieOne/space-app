@@ -5,11 +5,16 @@ export interface ApiResponse {
   results: any
 }
 
+export interface DownloadObject {
+    name: string
+    content: Docking | Expedition | Agency | Astronaut | Spacestation | 
+          Spacecraft | LaunchVehicle | Location | Launch | Event;
+}
 // ----------------- Space Interfaces -----------------
 export interface Expedition {
   start: Date
   end: Date
-  name: String
+  name: string
   id: number
   url: string
   mission_patches: [any]
@@ -92,7 +97,7 @@ export interface Spacestation {
 
 export interface Spacecraft {
   description: String
-  name: String
+  name: string
   id: number
   serial_number: number
   spacecraft_config: SpacecraftConfig

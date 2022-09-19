@@ -2,22 +2,21 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
 import CustomSelect from '../components/shared/CustomSelect'
-import SkeletonSpacestation from '../components/shared/skeletons/SkeletonSpacestation'
 import SubPage from '../components/shared/SubPage'
 import SpacestationCard from '../components/Spacestation/SpacestationCard'
 import {
-  optionsSpaceStations,
-  SORT_AZ,
-  SORT_NEW,
-  SORT_OLD,
-  SORT_ZA,
+    optionsSpaceStations,
+    SORT_AZ,
+    SORT_NEW,
+    SORT_OLD,
+    SORT_ZA
 } from '../shared/data'
 import { ApiResponse, SortOption, Spacestation } from '../shared/interfaces'
 import {
-  compareAZ,
-  compareNewest,
-  compareOldest,
-  compareZA,
+    compareAZ,
+    compareNewest,
+    compareOldest,
+    compareZA
 } from '../shared/sortMethods'
 
 export default function Spacestations() {

@@ -8,7 +8,7 @@ type AstronautCard = {
 
 export default function AstronautCard({ astronaut }: AstronautCard) {
   return (
-    <Card onClick={() => {}}>
+    <Card onClick={() => {}} data={{ name: astronaut.name, content: astronaut }}>
       {astronaut.profile_image_thumbnail && (
         <img
           className="h-full rounded-l-lg object-cover"

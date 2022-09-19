@@ -6,7 +6,7 @@ interface DockingProp {
 }
 export default function DockingCard({ docking }: DockingProp) {
   return (
-    <Card onClick={() => {}}>
+    <Card onClick={() => {}} data={{ name: docking.launch_id?.toString(), content: docking }}>
       {docking.flight_vehicle.destination && (
         <img
           className="h-full w-80 rounded-l-lg object-cover"

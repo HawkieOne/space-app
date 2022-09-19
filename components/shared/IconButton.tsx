@@ -11,7 +11,7 @@ export default function IconButton({
 }: ButtonProps) {
   return (
     <button
-      className="rounded-lg bg-spaceTitle p-2 hover:bg-spacePink"
+      className="rounded-lg bg-spaceTitle p-2 hover:bg-spacePink h-12"
       onClick={onClick}
     >
       {children}

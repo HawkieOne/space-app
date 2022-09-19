@@ -1,6 +1,5 @@
 import { Agency } from '../../shared/interfaces'
 import Card from '../shared/Card'
-import ExportBox from '../shared/ExportBox'
 
 type AgencyCardProps = {
   agency: Agency
@@ -8,7 +7,7 @@ type AgencyCardProps = {
 
 export default function AgencyCard({ agency }: AgencyCardProps) {
   return (
-    <Card onClick={() => {}}>
+    <Card onClick={() => {}} data={{ name: agency.name, content: agency }}>
       {agency.image_url && (
         <img
           className="h-full w-80 rounded-l-lg object-cover"
@@ -27,18 +26,27 @@ export default function AgencyCard({ agency }: AgencyCardProps) {
             </h2>
           </div>
           <div className="flex space-x-2">
-            <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-              {agency.country_code}
-            </div>
+            {agency.country_code && (
+              <div className="desktop:text-md flex items-center rounded-full bg-sky-500 px-2 py-1 text-sm">
+                {agency.country_code}
+              </div>
+            )}
+            {agency.spacecraft && (
+              <div className="desktop:text-md flex items-center rounded-full bg-sky-500 px-2 py-1 text-sm">
+                {agency.spacecraft}
+              </div>
+            )}
+            {agency.type && (
+              <div className="text-md desktop:text-md flex items-center rounded-full bg-lime-500 px-2 py-1">
+                {agency.type}
+              </div>
+            )}
           </div>
           <span className="text-5xl text-spaceText">{agency.name}</span>
           <div className="mt-4 flex items-center">
-            <div className="pr-2 text-xs text-spaceText">
-              <i className="fas fa-wifi text-green"></i> {agency.type}
-            </div>
+            <div className="xl:text-md pr-2 text-xs">{agency.description}</div>
           </div>
         </div>
-        <ExportBox fileName={agency.name} data={agency} />
       </div>
     </Card>
   )

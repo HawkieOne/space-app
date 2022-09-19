@@ -8,14 +8,18 @@ interface ExpeditionProp {
 
 export default function ExpeditionCard({ expedition }: ExpeditionProp) {
   return (
-    <Card onClick={() => {}}>
-        {expedition.spacestation.image_url && (
+    <Card
+      onClick={() => {}}
+      data={{ name: expedition.name, content: expedition }}
+    >
+      {expedition.spacestation.image_url && (
         <img
-        className="h-full w-80 rounded-l-lg object-cover"
-        src={expedition.spacestation.image_url}
-        alt="Event image"
-      />
-      )}w-128 h-full rounded-l-sm
+          className="h-full w-80 rounded-l-lg object-cover"
+          src={expedition.spacestation.image_url}
+          alt="Event image"
+        />
+      )}
+      w-128 h-full rounded-l-sm
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">

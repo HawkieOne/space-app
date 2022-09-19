@@ -1,9 +1,5 @@
 import { Event } from '../../shared/interfaces'
 import Card from '../shared/Card'
-import DownloadButton from '../shared/DownloadButton'
-import ExportBox from '../shared/ExportBox'
-import MenuCard from '../shared/MenuCard'
-import ShareButton from '../shared/ShareButton'
 
 type EventCardProps = {
   event: Event
@@ -12,7 +8,7 @@ type EventCardProps = {
 
 export default function EventCard({ event, onClick }: EventCardProps) {
   return (
-    <Card onClick={onClick}>
+    <Card onClick={onClick} data={{ name: event.name, content: event }}>
       <img
         className="h-full w-80 self-center rounded-lg object-cover shadow-2xl xl:w-96"
         src={event?.feature_image}
@@ -50,7 +46,7 @@ export default function EventCard({ event, onClick }: EventCardProps) {
         <div className="flex items-center">
           <div className="xl:text-md pr-2 text-xs">{event?.description}</div>
         </div>
-        <ExportBox fileName={event.name} data={event} />
+        {/* <ExportBox fileName={event.name} data={event} /> */}
       </div>
     </Card>
   )
