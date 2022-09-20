@@ -1,8 +1,8 @@
-import React from 'react'
 import Moment from 'react-moment'
+import { TextConstants } from '../../shared/constants'
 import { Launch } from '../../shared/interfaces'
-import LargeText from './Text/LargeText'
 import SmallText from './Text/SmallText'
+import Text from './Text/Text'
 
 const TODAY = new Date()
 
@@ -34,17 +34,18 @@ export default function MomentTimeCard({
       </h1>
       <div className="text-md laptop:text-md desktop:text-xl flex flex-col">
         <div className="self-center">
-          <SmallText text={launch.rocket.full_name} />
+          <Text text={launch.rocket.full_name} size={TextConstants.small} />
         </div>
         <div className="flex justify-between">
-          <LargeText text="Date" />
+          <Text text="Date" size={TextConstants.large} />
           <Moment format="YYYY-MM-DD HH:SS" className="text-lg desktop:text-xl">
             {launch.net}
           </Moment>
         </div>
         <div className="flex justify-between items-center">
-          <LargeText
+          <Text
             text={`Days ${hasLaunchHappened ? ' since ' : ' to '} launch: `}
+            size={TextConstants.large}
           />
           <Moment
             diff={TODAY}

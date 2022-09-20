@@ -1,5 +1,8 @@
+import { TextConstants } from '../../shared/constants'
 import { Event } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import InfoColorPill from '../shared/InfoColorPill'
+import Text from '../shared/Text/Text'
 
 type EventCardProps = {
   event: Event
@@ -24,29 +27,22 @@ export default function EventCard({ event, onClick }: EventCardProps) {
           </h2>
         </div>
         <div className="flex space-x-2">
-          {event?.location && (
-            <div className="desktop:text-md flex items-center rounded-full bg-yellow-500 px-2 py-1 text-sm">
-              {event?.location}
-            </div>
-          )}
-          {event?.launches[0]?.launch_service_provider.name && (
-            <div className="desktop:text-md flex items-center rounded-full bg-sky-500 px-2 py-1 text-sm">
-              {event?.launches[0]?.launch_service_provider.name}
-            </div>
-          )}
-          {event?.launches[0]?.name && (
-            <div className="text-md desktop:text-md flex items-center rounded-full bg-lime-500 px-2 py-1">
-              {event?.launches[0]?.name}
-            </div>
-          )}
+          <InfoColorPill data={event?.location} bgColor="bg-yellow-500" />
+          <InfoColorPill
+            data={event?.launches[0]?.launch_service_provider.name}
+            bgColor="bg-sky-500"
+          />
+          <InfoColorPill
+            data={event?.launches[0]?.name}
+            bgColor="bg-lime-500"
+          />
         </div>
         <span className="text-grey-darkest text-3xl desktop:text-4xl">
           {event?.name}
         </span>
-        <div className="flex items-center">
-          <div className="xl:text-md pr-2 text-xs">{event?.description}</div>
+        <div className="flex items-center w-3/4 pr-2">
+            <Text text={event?.description} size={TextConstants.small} />
         </div>
-        {/* <ExportBox fileName={event.name} data={event} /> */}
       </div>
     </Card>
   )

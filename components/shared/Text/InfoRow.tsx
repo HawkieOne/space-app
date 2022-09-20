@@ -1,6 +1,5 @@
-import React from 'react'
-import LargeText from './LargeText'
-import SmallText from './SmallText'
+import { TextConstants } from '../../../shared/constants'
+import Text from './Text'
 
 type InfoRowProps = {
   title: string
@@ -16,11 +15,12 @@ export default function InfoRow({
 }: InfoRowProps) {
   return (
     <div className="flex w-full items-center justify-between">
-      <LargeText text={title} capitalize={true} />
-      <SmallText
+      <Text text={title} capitalize={true} size={TextConstants.large} />
+      <Text
         text={info ? info : 'Unknown'}
         capitalize={true}
         color={infoColor}
+        size={TextConstants.small}
       />
     </div>
   )
