@@ -1,24 +1,31 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
-import DashboardTabber from './DashboardTabber'
 import { spaceAPI } from '../api/spaceDevsApi'
-import Moment from 'react-moment'
-import SkeletonCard from './shared/SkeletonCard'
-import SkeletonListMain from './shared/SkeletonListMain'
-import SkeletonLaunchCard from './shared/SkeletonLaunchCard'
-import InfoCard from './shared/InfoCard'
+import { compareDateToToday } from '../shared/dateMethods'
+import { Launch } from '../shared/interfaces'
+import Box from './shared/Box'
+import Divider from './shared/Divider'
+import RadioGroupLaunchesList from './shared/RadioGroupList'
+import SubPage from './shared/SubPage'
+import InfoRow from './shared/Text/InfoRow'
+import { Tab } from '@headlessui/react'
+import MomentTimeCard from './shared/MomentTimeCard'
+
+function classNames(...classes: any[]) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export default function Main() {
-  const [currentLaunch, setCurrentLaunch] = useState<any>(null)
-  const [upcomingLaunches, setUpcomingLaunches] = useState<any>(null)
-  const [lastPreviousLaunch, setLastPreviousLaunch] = useState<any>(null)
-
-  const [hasFetchedData, setHasFetchedData] = useState<boolean>(false)
+  const [currentLaunch, setCurrentLaunch] = useState<Launch | null>(null)
+  const [upcomingLaunches, setUpcomingLaunches] = useState<Launch[] | null>(
+    null
+  )
+  const [previousLaunches, setPreviousLaunches] = useState<Launch[] | null>(
+    null
+  )
 
   useEffect(() => {
     spaceAPI?.getLaunches!()
       .then((launches: any) => {
-        console.log(launches)
         setUpcomingLaunches(launches.results)
         setCurrentLaunch(launches.results[0])
       })
@@ -28,170 +35,144 @@ export default function Main() {
 
     spaceAPI?.getPreviousLaunches!()
       .then((prevLaunches: any) => {
-        console.log(prevLaunches)
-        setLastPreviousLaunch(prevLaunches.results[0])
+        setPreviousLaunches(prevLaunches.results)
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  useEffect(() => {
-    if (
-      currentLaunch != null &&
-      ((upcomingLaunches != null) != lastPreviousLaunch) != null
-    ) {
-      setHasFetchedData(true)
-    }
-  }, [currentLaunch, upcomingLaunches, lastPreviousLaunch])
-
-  const changeCurrentLaunch = (launch: any) => {
-    setCurrentLaunch(launch)
-  }
-
-  const today = new Date()
-
   return (
-    <div>
-      {hasFetchedData == true ? (
-        <div className="flex h-full w-full flex-col items-center justify-start space-y-8 bg-gray-900 p-4">
-          <div className="flex w-full max-w-7xl justify-center gap-8">
-            {/* <SkeletonCard /> */}
-
-            <InfoCard header="NEXT LAUNCH">
-              <p className="text-xl">
-                {upcomingLaunches[0].rocket.configuration.full_name}
-              </p>
-              <Moment format="YYYY-MM-DD HH:SS" className="text-lg">
-                {upcomingLaunches[0].net}
-              </Moment>
-              <div>
-                <Moment
-                  diff={today}
-                  unit="days"
-                  className="text-3xl text-emerald-700"
-                >
-                  {upcomingLaunches[0].net}
-                </Moment>
-                <span className="ml-1">
-                  {upcomingLaunches[0].net === 1 ? 'day' : 'days'} to launch
-                </span>
-              </div>
-            </InfoCard>
-
-            <InfoCard header="CHOSEN LAUNCH">
-              <p className="text-xl">
-                {currentLaunch.rocket.configuration.full_name}
-              </p>
-              <Moment format="YYYY-MM-DD HH:SS" className="text-lg">
-                {currentLaunch.net}
-              </Moment>
-              <div>
-                <Moment
-                  diff={today}
-                  unit="days"
-                  className="text-3xl text-emerald-700"
-                >
-                  {currentLaunch.net}
-                </Moment>
-                <span className="ml-1">
-                  {currentLaunch.net === 1 ? 'day' : 'days'} to launch
-                </span>
-              </div>
-            </InfoCard>
-
-            <InfoCard header="DAYS SINCE LAST LAUNCH">
-              <p className="text-xl">
-                {lastPreviousLaunch?.rocket.configuration.full_name}
-              </p>
-              <Moment format="YYYY-MM-DD HH:SS" className="text-lg">
-                {lastPreviousLaunch?.net}
-              </Moment>
-              <div>
-                <Moment
-                  diff={lastPreviousLaunch?.net}
-                  unit="days"
-                  className="text-3xl text-cyan-700"
-                >
-                  {today}
-                </Moment>
-                <span className="ml-1">
-                  {lastPreviousLaunch?.net === 1 ? 'day' : 'days'} ago
-                </span>
-              </div>
-            </InfoCard>
-          </div>
-
-          <div className="grid grid-cols-3 gap-5">
-            <div className="flex h-full flex-col justify-center space-x-4 rounded-2xl bg-gray-800 text-white">
-              <img
-                src={currentLaunch.image}
-                alt=""
-                className="cropped-image rounded-t-2xl"
-              />
-              <div className="my-4 flex flex-col items-start justify-around space-y-4">
-                <p>{currentLaunch.name}</p>
-                <p>{currentLaunch.launch_service_provider.name}</p>
-                <p>{currentLaunch.pad.location.name}</p>
-                <p>{currentLaunch.net}</p>
-              </div>
-            </div>
-
-            <div className="rounded-2xl bg-gray-800 px-2 py-2 text-white">
-              {upcomingLaunches!.map((launch: any, index: number) => (
-                <div key={launch.index}>
-                  {currentLaunch.id === launch.id ? (
-                    <div
-                      key={launch.id}
-                      className="flex cursor-pointer flex-col space-y-2 rounded-2xl bg-slate-500 p-2"
-                    >
-                      <p>{launch.name}</p>
-                    </div>
-                  ) : (
-                    <div
-                      key={launch.id}
-                      className="flex cursor-pointer flex-col space-y-2 rounded-2xl p-2 hover:bg-gray-900 hover:text-red-300"
-                      onClick={() => changeCurrentLaunch(launch)}
-                    >
-                      <p>{launch.name}</p>
-                    </div>
-                  )}
+    <SubPage title="Launches">
+      {currentLaunch && upcomingLaunches && previousLaunches && (
+        <div className="flex h-full w-full items-center justify-center bg-gray-900 p-4">
+          <div className="max-h-2/4 flex w-full justify-around">
+            <Box
+              padding="px-6 py-3"
+              spaceY="space-y-4"
+              flex="flex items-center"
+              styles="flex basis-1/3 flex-col rounded-lg bg-gray-800 text-white"
+            >
+              <>
+                <div className="flex justify-center">
+                  <img
+                    src={currentLaunch.image}
+                    alt="Current launch"
+                    className="h-96 rounded-lg shadow-2xl"
+                  />
                 </div>
-              ))}
-            </div>
-            {/* <SkeletonListMain /> */}
+                <Divider color="bg-spaceLightGrey" opacity={true} />
+                <InfoRow title={'Name'} info={currentLaunch.name} />
+                <InfoRow
+                  title={'Company'}
+                  info={currentLaunch.launch_service_provider.name}
+                />
+                <InfoRow
+                  title={'Type'}
+                  info={currentLaunch.launch_service_provider.type}
+                />
+                <InfoRow
+                  title={'Location'}
+                  info={currentLaunch.pad.location.name}
+                />
+                <InfoRow
+                  title={'Launch date'}
+                  info={new Date(currentLaunch.net).toLocaleString()}
+                  infoColor={
+                    compareDateToToday(new Date(currentLaunch.net))
+                      ? 'text-blue-500'
+                      : 'text-red-400'
+                  }
+                />
+              </>
+            </Box>
 
-            <div className="flex h-full flex-col justify-center space-x-4 rounded-2xl bg-gray-800 text-white">
-              <img
-                src={currentLaunch.image}
-                alt=""
-                className="cropped-image rounded-t-2xl"
+            <div className="basis-1/4 rounded-2xl bg-gray-800 px-2 py-2 text-white">
+              <Tab.Group>
+                <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+                  <Tab
+                    key={1}
+                    className={({ selected }) =>
+                      classNames(
+                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-spaceTitle focus:outline-none focus:ring-2',
+                        selected
+                          ? 'bg-spaceTealHover shadow'
+                          : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      )
+                    }
+                  >
+                    Upcoming
+                  </Tab>
+                  <Tab
+                    key={2}
+                    className={({ selected }) =>
+                      classNames(
+                        'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-spaceTitle focus:outline-none focus:ring-2',
+                        selected
+                          ? 'bg-spaceTealHover shadow'
+                          : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
+                      )
+                    }
+                  >
+                    Previous
+                  </Tab>
+                </Tab.List>
+                <Tab.Panels className="mt-2">
+                  <Tab.Panel
+                    key={3}
+                    className={classNames(
+                      'rounded-xl p-3',
+                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                    )}
+                  >
+                    <RadioGroupLaunchesList
+                      values={upcomingLaunches}
+                      startValue={upcomingLaunches[0]}
+                      onChange={(launch) => setCurrentLaunch(launch)}
+                    />
+                  </Tab.Panel>
+                  <Tab.Panel
+                    key={4}
+                    className={classNames(
+                      'rounded-xl p-3',
+                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                    )}
+                  >
+                    <RadioGroupLaunchesList
+                      values={previousLaunches}
+                      startValue={upcomingLaunches[0]}
+                      onChange={(launch) => setCurrentLaunch(launch)}
+                    />
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Tab.Group>
+            </div>
+
+            <div className="basis-1/4 rounded-2xl bg-gray-800 flex flex-col space-y-4 p-3">
+              <MomentTimeCard 
+                title="Next launch"
+                launch={upcomingLaunches[0]}
               />
-              <div className="my-4 flex flex-col items-start justify-around space-y-4">
-                <p>{currentLaunch.name}</p>
-                <p>{currentLaunch.launch_service_provider.name}</p>
-                <p>{currentLaunch.pad.location.name}</p>
-                <p>{currentLaunch.net}</p>
-              </div>
+              <MomentTimeCard 
+                title="Previous launch"
+                launch={previousLaunches[0]}
+                hasLaunchHappened={true}
+              />
+              <MomentTimeCard 
+                title="Next launch"
+                launch={upcomingLaunches[0]}
+              />
+              <MomentTimeCard 
+                title="Previous launch"
+                launch={previousLaunches[0]}
+                hasLaunchHappened={true}
+              />              
             </div>
-            {/* <SkeletonLaunchCard /> */}
-          </div>
-        </div>
-      ) : (
-        <div className="flex h-full w-full flex-col items-center justify-start space-y-8 bg-gray-900 p-4">
-          <div className="flex w-full max-w-7xl justify-center gap-8">
-            <SkeletonCard />
-            <SkeletonCard />
-            <SkeletonCard />
-          </div>
-
-          <div className="grid h-3/5 w-3/5 grid-cols-3 gap-5">
-            <SkeletonLaunchCard />
-            <SkeletonListMain />
-            <SkeletonLaunchCard />
           </div>
         </div>
       )}
-    </div>
+    </SubPage>
   )
 }

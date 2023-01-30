@@ -8,7 +8,7 @@ export default function Header() {
         <div className="h-12 w-12 text-red-400 hover:cursor-pointer">
           <img src="space.svg" className="text-red-400" alt="space"></img>
         </div>
-        <h1 className="text-3xl text-teal-600 hover:cursor-pointer">
+        <h1 className="text-3xl xl:text-5xl text-teal-600 hover:cursor-pointer">
           Spac<span className="text-teal-500">Q</span>
         </h1>
       </div>
