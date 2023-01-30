@@ -11,7 +11,7 @@ type EventCardProps = {
 
 export default function EventCard({ event, onClick }: EventCardProps) {
   return (
-    <Card onClick={onClick} data={{ name: event.name, content: event }}>
+    <Card onClick={onClick} data={{ name: event.name, content: event }} wikipedia={false}>
       <img
         className="h-full w-80 self-center rounded-lg object-cover shadow-2xl xl:w-96"
         src={event?.feature_image}

@@ -8,7 +8,7 @@ type AgencyCardProps = {
 
 export default function AgencyCard({ agency }: AgencyCardProps) {
   return (
-    <Card onClick={() => {}} data={{ name: agency.name, content: agency }}>
+    <Card onClick={() => {}} data={{ name: agency.name, content: agency }} wikipedia={true}>
       {agency.image_url && (
         <img
           className="h-full w-80 self-center rounded-lg object-cover shadow-2xl xl:w-96"

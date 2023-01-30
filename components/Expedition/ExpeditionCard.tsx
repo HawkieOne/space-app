@@ -11,6 +11,7 @@ export default function ExpeditionCard({ expedition }: ExpeditionProp) {
     <Card
       onClick={() => {}}
       data={{ name: expedition.name, content: expedition }}
+      wikipedia={true}
     >
       {expedition.spacestation.image_url && (
         <img
