@@ -26,6 +26,7 @@ export default function Main() {
   useEffect(() => {
     spaceAPI?.getLaunches!()
       .then((launches: any) => {
+        console.log(launches.results)
         setUpcomingLaunches(launches.results)
         setCurrentLaunch(launches.results[0])
       })
@@ -41,7 +42,6 @@ export default function Main() {
         console.log(error)
       })
   }, [])
-
   return (
     <SubPage title="Launches">
       {currentLaunch && upcomingLaunches && previousLaunches && (
@@ -119,56 +119,64 @@ export default function Main() {
                     Previous
                   </Tab>
                 </Tab.List>
-                <Tab.Panels className="mt-2">
-                  <Tab.Panel
-                    key={3}
-                    className={classNames(
-                      'rounded-xl p-3',
-                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
-                    )}
-                  >
-                    <RadioGroupLaunchesList
-                      values={upcomingLaunches}
-                      startValue={upcomingLaunches[0]}
-                      onChange={(launch) => setCurrentLaunch(launch)}
-                    />
-                  </Tab.Panel>
-                  <Tab.Panel
-                    key={4}
-                    className={classNames(
-                      'rounded-xl p-3',
-                      'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
-                    )}
-                  >
-                    <RadioGroupLaunchesList
-                      values={previousLaunches}
-                      startValue={upcomingLaunches[0]}
-                      onChange={(launch) => setCurrentLaunch(launch)}
-                    />
-                  </Tab.Panel>
-                </Tab.Panels>
+                {currentLaunch && (
+                  <Tab.Panels className="mt-2">
+                    <Tab.Panel
+                      key={3}
+                      className={classNames(
+                        'rounded-xl p-3',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                      )}
+                    >
+                      <RadioGroupLaunchesList
+                        values={upcomingLaunches}
+                        value={currentLaunch}
+                        onChange={(launch) => setCurrentLaunch(launch)}
+                      />
+                    </Tab.Panel>
+                    <Tab.Panel
+                      key={4}
+                      className={classNames(
+                        'rounded-xl p-3',
+                        'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                      )}
+                    >
+                      <RadioGroupLaunchesList
+                        values={previousLaunches}
+                        value={currentLaunch}
+                        onChange={(launch) => setCurrentLaunch(launch)}
+                      />
+                    </Tab.Panel>
+                  </Tab.Panels>
+                )}
               </Tab.Group>
             </div>
-
-            <div className="basis-1/4 rounded-2xl bg-gray-800 flex flex-col space-y-4 p-3">
-              <MomentTimeCard 
+            <div className="flex basis-1/4 flex-col space-y-4 rounded-2xl bg-gray-800 p-3">
+              <MomentTimeCard
                 title="Next launch"
                 launch={upcomingLaunches[0]}
               />
-              <MomentTimeCard 
+              <MomentTimeCard
+                title="Next SpaceX launch"
+                launch={
+                  upcomingLaunches.find((launch) =>
+                    launch.launch_service_provider.name.includes('SpaceX')
+                  ) || null
+                }
+              />
+              <MomentTimeCard
+                title="Next Russian launch"
+                launch={
+                  upcomingLaunches.find((launch) =>
+                    launch.name.includes('Soyuz')
+                  ) || null
+                }
+              />
+              <MomentTimeCard
                 title="Previous launch"
                 launch={previousLaunches[0]}
                 hasLaunchHappened={true}
               />
-              <MomentTimeCard 
-                title="Next launch"
-                launch={upcomingLaunches[0]}
-              />
-              <MomentTimeCard 
-                title="Previous launch"
-                launch={previousLaunches[0]}
-                hasLaunchHappened={true}
-              />              
             </div>
           </div>
         </div>

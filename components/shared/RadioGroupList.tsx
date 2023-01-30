@@ -5,20 +5,20 @@ import CodeIcon from './Icons/CodeIcon'
 
 type RadioGroupProps = {
   values: Launch[]
-  startValue: Launch
+  value: Launch
   onChange: (launch: Launch) => void
   title?: string
 }
 
 export default function RadioGroupLaunchesList({
   values,
-  startValue,
+  value,
   onChange,
   title,
 }: RadioGroupProps) {
   return (
     <RadioGroup
-      value={startValue}
+      value={value}
       onChange={onChange}
       className="flex flex-col space-y-1"
     >
@@ -61,11 +61,6 @@ export default function RadioGroupLaunchesList({
                     />
                   </div>
                 </div>
-                {checked && (
-                  <div className="shrink-0 text-white">
-                    <CodeIcon />
-                  </div>
-                )}
               </div>
             </>
           )}

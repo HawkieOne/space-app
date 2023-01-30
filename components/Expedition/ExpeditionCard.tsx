@@ -20,7 +20,6 @@ export default function ExpeditionCard({ expedition }: ExpeditionProp) {
           alt="Event image"
         />
       )}
-      w-128 h-full rounded-l-sm
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">

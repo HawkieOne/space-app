@@ -2,6 +2,7 @@ import { TextConstants } from '../../shared/constants'
 import { Event } from '../../shared/interfaces'
 import Card from '../shared/Card'
 import InfoColorPill from '../shared/InfoColorPill'
+import NullWrapper from '../shared/NullWrapper'
 import Text from '../shared/Text/Text'
 
 type EventCardProps = {
@@ -19,9 +20,11 @@ export default function EventCard({ event, onClick }: EventCardProps) {
       />
       <div className="flex w-full flex-col justify-around space-y-2">
         <div className="flex items-baseline space-x-2">
-          <h3 className="text-md mb-1 font-light uppercase text-teal-500 desktop:text-xl">
-            {event?.type.name}
-          </h3>
+          <NullWrapper item={event.type}>
+            <h3 className="text-md mb-1 font-light uppercase text-teal-500 desktop:text-xl">
+              {event?.type.name}
+            </h3>
+          </NullWrapper>
           <h2 className="text-md mb-1 font-light uppercase text-fuchsia-500 desktop:text-xl">
             {new Date(event?.date).toLocaleString()}
           </h2>
@@ -40,8 +43,8 @@ export default function EventCard({ event, onClick }: EventCardProps) {
         <span className="text-grey-darkest text-3xl desktop:text-4xl">
           {event?.name}
         </span>
-        <div className="flex items-center w-3/4 pr-2">
-            <Text text={event?.description} size={TextConstants.small} />
+        <div className="flex w-3/4 items-center pr-2">
+          <Text text={event?.description} size={TextConstants.small} />
         </div>
       </div>
     </Card>
