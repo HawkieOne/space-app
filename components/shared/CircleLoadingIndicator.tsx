@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function CircleLoadingIndicator() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center 
+    <div className="flex h-full w-full flex-col items-center justify-center
                     text-spacePink space-y-4">
       <svg
         xmlns="http://www.w3.org/2000/svg"

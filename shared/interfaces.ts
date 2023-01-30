@@ -7,7 +7,7 @@ export interface ApiResponse {
 
 export interface DownloadObject {
     name: string
-    content: Docking | Expedition | Agency | Astronaut | Spacestation | 
+    content: Docking | Expedition | Agency | Astronaut | Spacestation |
           Spacecraft | LaunchVehicle | Location | Launch | Event;
 }
 // ----------------- Space Interfaces -----------------
