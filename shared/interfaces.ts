@@ -123,7 +123,7 @@ export interface LaunchVehicle {
   id: number
   image_url: string
   last_launch_date: Date | null
-  launcher_config: Configuration
+  launcher_config: Configuration | null;
   serial_number: string
   status: string
   url: string
