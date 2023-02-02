@@ -3,20 +3,20 @@ import { Expedition } from '../../shared/interfaces'
 import Card from '../shared/Card'
 
 interface ExpeditionProp {
-  expedition: Expedition
+  item?: Expedition
 }
 
-export default function ExpeditionCard({ expedition }: ExpeditionProp) {
-  return (
+export default function ExpeditionCard({ item }: ExpeditionProp) {
+  return item ? (
     <Card
       onClick={() => {}}
-      data={{ name: expedition.name, content: expedition }}
+      data={{ name: item.name, content: item }}
       wikipedia={true}
     >
-      {expedition.spacestation.image_url && (
+      {item.spacestation.image_url && (
         <img
           className="h-full w-80 rounded-l-lg object-cover"
-          src={expedition.spacestation.image_url}
+          src={item.spacestation.image_url}
           alt="Event image"
         />
       )}
@@ -24,22 +24,24 @@ export default function ExpeditionCard({ expedition }: ExpeditionProp) {
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">
             <h3 className="mb-1 font-light uppercase text-teal-500">
-              {expedition?.name}
+              {item?.name}
             </h3>
             <h2 className="mb-1 font-light uppercase text-fuchsia-500">
-              {expedition?.start}
+              {item?.start}
             </h2>
           </div>
           <div className="flex space-x-2">
             <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-              {expedition?.spacestation.name}
+              {item?.spacestation.name}
             </div>
             <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-              {expedition?.spacestation.orbit}
+              {item?.spacestation.orbit}
             </div>
           </div>
         </div>
       </div>
     </Card>
+  ) : (
+    <></>
   )
 }

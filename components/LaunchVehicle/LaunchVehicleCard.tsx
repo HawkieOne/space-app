@@ -4,21 +4,20 @@ import Card from '../shared/Card'
 import NullWrapper from '../shared/NullWrapper'
 
 type LaunchVehicleCardProps = {
-  launchVehicle: LaunchVehicle
+  item?: LaunchVehicle
 }
 
-export default function LaunchVehicleCard({
-  launchVehicle,
-}: LaunchVehicleCardProps) {
-  return (
+export default function LaunchVehicleCard({ item }: LaunchVehicleCardProps) {
+  return item ? (
     <Card
       onClick={() => {}}
-      data={{ name: launchVehicle.id.toString(), content: launchVehicle }}
+      data={{ name: item.launcher_config?.name || "", content: item }}
+      wikipedia
     >
-      {launchVehicle.image_url && (
+      {item.image_url && (
         <img
           className="h-full w-40 rounded-l-lg object-cover"
-          src={launchVehicle.image_url}
+          src={item.image_url}
           alt="Event image"
         />
       )}
@@ -26,28 +25,30 @@ export default function LaunchVehicleCard({
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">
             <h3 className="mb-1 font-light uppercase text-teal-500">
-              {launchVehicle.serial_number}
+              {item.serial_number}
             </h3>
-            <NullWrapper item={launchVehicle.launcher_config}>
+            <NullWrapper item={item.launcher_config}>
               <h2 className="mb-1 font-light uppercase text-fuchsia-500">
-                {launchVehicle.launcher_config?.name}
+                {item.launcher_config?.name}
               </h2>
             </NullWrapper>
           </div>
           <div className="flex space-x-2">
-            <NullWrapper item={launchVehicle.launcher_config}>
+            <NullWrapper item={item.launcher_config}>
               <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-                {launchVehicle.launcher_config?.full_name}
+                {item.launcher_config?.full_name}
               </div>
             </NullWrapper>
-            <NullWrapper item={launchVehicle.launcher_config}>
+            <NullWrapper item={item.launcher_config}>
               <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-                {launchVehicle.launcher_config?.variant}
+                {item.launcher_config?.variant}
               </div>
             </NullWrapper>
           </div>
         </div>
       </div>
     </Card>
+  ) : (
+    <></>
   )
 }

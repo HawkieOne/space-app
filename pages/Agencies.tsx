@@ -1,30 +1,15 @@
-import { useEffect, useState } from 'react'
 import { spaceAPI } from '../api/spaceDevsApi'
+import { BASE_URL } from '../api/utilitites/provider'
 import AgencyCard from '../components/Agency/AgencyCard'
-import SkeletonCardList from '../components/shared/skeletons/SkeletonCardList'
-import SubPage from '../components/shared/SubPage'
-import { Agency, ApiResponse } from '../shared/interfaces'
+import Page from '../components/shared/Page'
 
 export default function Agencies() {
-  const [agencies, setAgencies] = useState<Agency[] | null>(null)
-
-  useEffect(() => {
-    spaceAPI?.getAgencies!()
-      .then((res: ApiResponse) => {
-        setAgencies(res.results)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
-
   return (
-    <SubPage title="Agencies" >
-      {agencies && (
-        agencies.map((agency: Agency) => (
-          <AgencyCard key={agency.id} agency={agency} />
-        ))
-      )}
-    </SubPage>
+    <Page
+      title="Agencies"
+      listItem={<AgencyCard />}
+      fetchFunc={spaceAPI.getAgencies!}
+      baseLink={`${BASE_URL}agencies`}
+    />
   )
 }

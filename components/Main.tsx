@@ -26,7 +26,6 @@ export default function Main() {
   useEffect(() => {
     spaceAPI?.getLaunches!()
       .then((launches: any) => {
-        console.log(launches.results)
         setUpcomingLaunches(launches.results)
         setCurrentLaunch(launches.results[0])
       })
@@ -61,7 +60,6 @@ export default function Main() {
                     className="h-96 rounded-lg shadow-2xl"
                   />
                 </div>
-                <Divider color="bg-spaceLightGrey" opacity={true} />
                 <InfoRow title={'Name'} info={currentLaunch.name} />
                 <InfoRow
                   title={'Company'}
@@ -165,16 +163,22 @@ export default function Main() {
                 }
               />
               <MomentTimeCard
-                title="Next Russian launch"
+                title="Next government launch"
                 launch={
-                  upcomingLaunches.find((launch) =>
-                    launch.name.includes('Soyuz')
+                  upcomingLaunches.find(
+                    (launch) =>
+                      launch.launch_service_provider.type === 'Government'
                   ) || null
                 }
               />
               <MomentTimeCard
-                title="Previous launch"
-                launch={previousLaunches[0]}
+                title="Next comemrcial launch"
+                launch={
+                  upcomingLaunches.find(
+                    (launch) =>
+                      launch.launch_service_provider.type === 'Commercial'
+                  ) || null
+                }
                 hasLaunchHappened={true}
               />
             </div>

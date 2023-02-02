@@ -28,12 +28,12 @@ export interface Docking {
   docking_location: DockingLocation
   flight_vehicle: FlightVehicle
   launch_id: number | null
-  url: String
+  url: string
 }
 
 interface DockingLocation {
   id: number
-  name: String
+  name: string
   spacestation: Spacestation
 }
 

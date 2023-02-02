@@ -32,7 +32,7 @@ export default function MomentTimeCard({
         {title}
       </h1>
       <div className="text-md laptop:text-md flex flex-col desktop:text-xl">
-        <div className="self-start text-spacePink">
+        <div className="self-start text-blue-500">
           <Text text={launch ? launch.name : ""} size={TextConstants.small} />
         </div>
         <div className="flex justify-between items-center">
