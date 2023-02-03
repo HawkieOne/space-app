@@ -96,7 +96,7 @@ export interface Spacestation {
 }
 
 export interface Spacecraft {
-  description: String
+  description: string
   name: string
   id: number
   serial_number: number

@@ -4,6 +4,7 @@ import { spaceAPI } from '../api/spaceDevsApi'
 import CustomSelect from '../components/shared/CustomSelect'
 import SubPage from '../components/shared/SubPage'
 import SpacestationCard from '../components/Spacestation/SpacestationCard'
+import { BASE_URL } from '../api/utilitites/provider'
 import {
     optionsSpaceStations,
     SORT_AZ,
@@ -60,7 +61,7 @@ export default function Spacestations() {
   }
 
   useEffect(() => {
-    spaceAPI?.getSpaceStations!()
+    spaceAPI?.getSpaceStations!(`${BASE_URL}spacestation`)
       .then((res: ApiResponse) => {
         console.log(res)
         const results = res.results

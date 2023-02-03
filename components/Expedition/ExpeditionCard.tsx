@@ -7,6 +7,7 @@ interface ExpeditionProp {
 }
 
 export default function ExpeditionCard({ item }: ExpeditionProp) {
+  console.log(item);
   return item ? (
     <Card
       onClick={() => {}}
@@ -27,7 +28,7 @@ export default function ExpeditionCard({ item }: ExpeditionProp) {
               {item?.name}
             </h3>
             <h2 className="mb-1 font-light uppercase text-fuchsia-500">
-              {item?.start}
+              {new Date(item?.start).toLocaleString()}
             </h2>
           </div>
           <div className="flex space-x-2">

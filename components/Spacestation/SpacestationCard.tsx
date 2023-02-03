@@ -27,7 +27,7 @@ export default function SpacestationCard({ spacestation, index }: any) {
           </p>
         </div>
         <div className="flex justify-between px-4 py-2">
-          <span className="mr-2 mb- inline-block rounded-full bg-gray-900 px-3 py-1 text-sm font-semibold text-red-700">
+          <span className="h-min mr-2 inline-block rounded-full bg-gray-900 px-3 py-1 text-sm font-semibold text-red-700 self-end">
           { spacestation.deorbited !== null ? "Deorbited" : "In orbit" }
           </span>
           {/* {spacestation.deorbited !== null ? (

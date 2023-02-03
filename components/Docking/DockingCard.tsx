@@ -1,5 +1,8 @@
 import { Docking } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import InfoColorPill from '../shared/InfoColorPill'
+import Text from '../shared/Text/Text'
+import { TextConstants } from '../../shared/constants'
 
 interface DockingProp {
   item?: Docking
@@ -7,7 +10,7 @@ interface DockingProp {
 export default function DockingCard({ item }: DockingProp) {
   return item ? (
     <Card
-      onClick={() => {}}
+      onClick={() => { }}
       data={{ name: item.docking_location.name || '', content: item }}
       wikipedia={false}
     >
@@ -22,20 +25,26 @@ export default function DockingCard({ item }: DockingProp) {
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">
             <h3 className="mb-1 font-light uppercase text-teal-500">
-              {item?.departure}
+              {item?.flight_vehicle.spacecraft.spacecraft_config.name}
             </h3>
-            <h2 className="mb-1 font-light uppercase text-fuchsia-500">
-              {item?.docking}
-            </h2>
           </div>
           <div className="flex space-x-2">
-            <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-              {item?.docking_location.name}
-            </div>
-            <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-              {item?.docking_location.spacestation.name}
-            </div>
+            <InfoColorPill
+              data={"Destination: " + item?.docking_location.spacestation.name}
+              bgColor="bg-lime-500"
+            />
+            <InfoColorPill
+              data={"Docking: " + new Date(item?.docking).toLocaleString()}
+              bgColor="bg-yellow-500"
+            />
+            <InfoColorPill
+              data={"Departure: " + new Date(item?.departure).toLocaleString()}
+              bgColor="bg-sky-500"
+            />
           </div>
+          <span className="text-grey-darkest text-3xl desktop:text-4xl">
+            {item?.flight_vehicle.spacecraft.name}
+          </span>
         </div>
       </div>
     </Card>
