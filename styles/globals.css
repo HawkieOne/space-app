@@ -2,18 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .current-card {
-    @apply rounded-2xl bg-gray-800 text-white;
-  }
-  .cropped-image {
-    width: 450px;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
-  }
-}
 html, body, #__next {
     height: 100%;
-    padding: 0%;
+}
+
+.animation-spin {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

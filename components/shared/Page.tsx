@@ -22,10 +22,11 @@ export default function Page({
   const [content, setContent] = useState<any[]>([])
   const [link, setLink] = useState<string | null>(baseLink)
   const [isLoading, setIsLoading] = useState(false)
+  const [isInitialLoading, setIsInitialLoading] = useState(true)
 
   useEffect(() => {
-    fetchData(link, fetchFunc)
-  }, [])
+    fetchData(link, fetchFunc).then(() => setIsInitialLoading(false))
+  }, [link])
 
   const fetchData = async (
     link: string | null,
@@ -44,6 +45,8 @@ export default function Page({
     }
   }
 
+  console.log(content.length)
+
   return (
     <SubPage
       title={title}
@@ -54,6 +57,7 @@ export default function Page({
           setIsLoading(false)
         }
       }}
+      initialLoading={isInitialLoading}
       isLoading={isLoading}
     >
       <>

@@ -1,0 +1,1 @@
+npm run export && rsync -avzh ./_static/ cpanel:spaceapp.hawkie.me

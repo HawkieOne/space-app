@@ -1,5 +1,4 @@
 import React from 'react'
-import { TextConstants } from '../../../shared/constants'
 
 type TextProps = {
   text: string

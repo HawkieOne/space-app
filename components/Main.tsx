@@ -3,7 +3,6 @@ import { spaceAPI } from '../api/spaceDevsApi'
 import { compareDateToToday } from '../shared/dateMethods'
 import { Launch } from '../shared/interfaces'
 import Box from './shared/Box'
-import Divider from './shared/Divider'
 import RadioGroupLaunchesList from './shared/RadioGroupList'
 import SubPage from './shared/SubPage'
 import InfoRow from './shared/Text/InfoRow'
@@ -42,7 +41,7 @@ export default function Main() {
       })
   }, [])
   return (
-    <SubPage title="Launches">
+    <SubPage title="Launches" initialLoading={!upcomingLaunches && !previousLaunches}>
       {currentLaunch && upcomingLaunches && previousLaunches && (
         <div className="flex h-full w-full items-center justify-center bg-gray-900 p-4">
           <div className="max-h-2/4 flex w-full justify-around">

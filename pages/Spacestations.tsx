@@ -74,7 +74,7 @@ export default function Spacestations() {
   }, [])
 
   return (
-    <SubPage title="Spacestations">
+    <SubPage title="Spacestations" initialLoading={!spacestations}>
       {spacestations && (
         <div className="flex flex-col space-y-6 p-6">
           <CustomSelect
