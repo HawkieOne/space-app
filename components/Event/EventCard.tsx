@@ -33,9 +33,9 @@ export default function EventCard({ item }: EventCardProps) {
           </h2>
         </div>
         <div className="flex space-x-2">
-          <InfoColorPill 
-            data={item?.location} 
-            bgColor="bg-yellow-500" 
+          <InfoColorPill
+            data={item?.location}
+            bgColor="bg-yellow-500"
           />
           <InfoColorPill
             data={item?.launches[0]?.launch_service_provider.name}
