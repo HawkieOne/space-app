@@ -12,7 +12,7 @@ type SubPageProps = {
   initialLoading: boolean
   isLoading?: boolean
   showSearch?: boolean
-  onSearchClick?: (searchTerm: string) => void 
+  onSearchClick?: (searchTerm: string) => void
 }
 
 export default function SubPage({
@@ -37,7 +37,7 @@ export default function SubPage({
           <Search onSearchClick={onSearchClick}/>
         </div>
       )}
-      <div className="justify-stretch flex h-full flex-col items-center space-y-6">
+      <div className="w-full justify-stretch flex h-full flex-col items-center space-y-6">
         {children}
         {initialLoading && <CircleLoadingIndicator />}
         {isLoading && <BounceLoader />}
