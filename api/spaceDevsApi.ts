@@ -1,6 +1,7 @@
 import { ApiCore } from './utilitites/core'
 
 export const spaceAPI = ApiCore({
+    // Can skip true
   events: true,
   launches: true,
   previousLaunches: true,
@@ -12,4 +13,5 @@ export const spaceAPI = ApiCore({
   launchVehicles: true,
   spacecrafts: true,
   locations: true,
+  searchQuery: true
 })

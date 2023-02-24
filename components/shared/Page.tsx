@@ -11,6 +11,7 @@ interface PageProps {
   listItem: ReactElement
   fetchFunc: (link: string) => Promise<any>
   baseLink: string
+  showSearch?: boolean
 }
 
 export default function Page({
@@ -18,9 +19,11 @@ export default function Page({
   listItem,
   fetchFunc,
   baseLink,
+  showSearch,
 }: PageProps) {
   const [content, setContent] = useState<any[]>([])
-  const [link, setLink] = useState<string | null>(baseLink)
+  const [searchContent, setSearchContent] = useState<any[]>([])
+  const [link, setLink] = useState<string | null>(`${BASE_URL}${baseLink}`)
   const [isLoading, setIsLoading] = useState(false)
   const [isInitialLoading, setIsInitialLoading] = useState(true)
 
@@ -44,9 +47,6 @@ export default function Page({
         })
     }
   }
-
-  console.log(content.length)
-
   return (
     <SubPage
       title={title}
@@ -59,23 +59,48 @@ export default function Page({
       }}
       initialLoading={isInitialLoading}
       isLoading={isLoading}
+      showSearch={showSearch}
+      onSearchClick={async (searchTerm) => {
+        if (searchTerm)
+          console.log(`${BASE_URL}${baseLink}?search=${searchTerm}`)
+        console.log(`${BASE_URL}event/upcoming?search=${searchTerm}`)
+        await spaceAPI.getSearchQuery!(
+          `${BASE_URL}${baseLink}?search=${searchTerm}`
+        )
+          .then((res: ApiResponse) => {
+            console.log(res)
+            setSearchContent([...res.results])
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      }}
     >
-      <>
-        {content &&
-          content.map((item: any, index: number) => {
-            return cloneElement(listItem, {
-              key: index,
-              item: item,
-            })
-          })}
-        {content.length > 0 && !link && (
-          <Text
-            text="All content has been loaded"
-            size={TextConstants.small}
-            color="text-emerald-700"
-          />
-        )}
-      </>
+      {searchContent.length > 0 ? (
+        searchContent.map((item: any, index: number) => {
+          return cloneElement(listItem, {
+            key: index,
+            item: item,
+          })
+        })
+      ) : (
+        <>
+          {content &&
+            content.map((item: any, index: number) => {
+              return cloneElement(listItem, {
+                key: index,
+                item: item,
+              })
+            })}
+          {content.length > 0 && !link && (
+            <Text
+              text="All content has been loaded"
+              size={TextConstants.small}
+              color="text-emerald-700"
+            />
+          )}
+        </>
+      )}
     </SubPage>
   )
 }

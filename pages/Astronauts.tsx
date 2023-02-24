@@ -11,6 +11,7 @@ export default function Astronauts() {
         listItem={<AstronautCard />}
         fetchFunc={spaceAPI.getAstronauts!}
         baseLink={`${BASE_URL}astronaut`}
+        showSearch
     />
   )
 }

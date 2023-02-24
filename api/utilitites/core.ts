@@ -16,6 +16,7 @@ export const ApiCore = (options: ApiCoreProps) => {
   var getDockings = null
   var getLaunchVehicles = null
   var getLocations = null
+  var getSearchQuery = null;
 
   if (options.launches) {
     getLaunches = () => {
@@ -64,6 +65,10 @@ export const ApiCore = (options: ApiCoreProps) => {
     getLocations = (link: string) => apiProvider.getData(link)
   }
 
+  if (options.searchQuery) {
+    getSearchQuery = (link:string) => apiProvider.getData(link);
+  }
+
   return {
     getLaunches,
     getPreviousLaunches,
@@ -76,5 +81,6 @@ export const ApiCore = (options: ApiCoreProps) => {
     getDockings,
     getLaunchVehicles,
     getLocations,
+    getSearchQuery
   }
 }

@@ -9,7 +9,8 @@ export default function Agencies() {
       title="Agencies"
       listItem={<AgencyCard />}
       fetchFunc={spaceAPI.getAgencies!}
-      baseLink={`${BASE_URL}agencies`}
+      baseLink={`agencies`}
+      showSearch
     />
   )
 }

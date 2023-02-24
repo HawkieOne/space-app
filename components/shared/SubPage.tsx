@@ -11,6 +11,8 @@ type SubPageProps = {
   onScrollBottom?: () => void
   initialLoading: boolean
   isLoading?: boolean
+  showSearch?: boolean
+  onSearchClick?: (searchTerm: string) => void 
 }
 
 export default function SubPage({
@@ -19,6 +21,8 @@ export default function SubPage({
   onScrollBottom,
   initialLoading,
   isLoading,
+  showSearch,
+  onSearchClick
 }: SubPageProps) {
   useBottomScrollListener(() => {
     if (onScrollBottom) {
@@ -26,10 +30,14 @@ export default function SubPage({
     }
   })
   return (
-    <div className="flex grow flex-col items-center justify-start p-4 py-8 bg-gray-900 space-y-4">
+    <div className="flex grow flex-col items-center justify-start space-y-4 bg-gray-900 p-4 py-8">
       <PageTitle title={title} />
-      <Search />
-      <div className="h-full flex flex-col items-center justify-stretch space-y-6">
+      {showSearch && onSearchClick && (
+        <div className='self-center'>
+          <Search onSearchClick={onSearchClick}/>
+        </div>
+      )}
+      <div className="justify-stretch flex h-full flex-col items-center space-y-6">
         {children}
         {initialLoading && <CircleLoadingIndicator />}
         {isLoading && <BounceLoader />}
