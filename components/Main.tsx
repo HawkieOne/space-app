@@ -43,13 +43,14 @@ export default function Main() {
   return (
     <SubPage title="Launches" initialLoading={!upcomingLaunches && !previousLaunches}>
       {currentLaunch && upcomingLaunches && previousLaunches && (
-        <div className="flex h-full w-full items-center justify-center bg-gray-900 p-4">
-          <div className="max-h-2/4 flex w-full justify-around">
+        // Is the outer div needed?
+        <div className="flex w-full bg-gray-900">
+          <div className="max-h-2/4 flex w-full gap-5 items-start justify-center">
             <Box
               padding="px-6 py-3"
               spaceY="space-y-4"
               flex="flex items-center"
-              styles="flex basis-1/3 flex-col rounded-lg bg-gray-800 text-white"
+              styles="flex basis-1/3 flex-col rounded-lg bg-gray-800 text-white h-full"
             >
               <>
                 <div className="flex justify-center">
@@ -84,7 +85,7 @@ export default function Main() {
               </>
             </Box>
 
-            <div className="basis-1/4 rounded-2xl bg-gray-800 px-2 py-2 text-white">
+            <div className="h-full basis-1/4 rounded-2xl bg-gray-800 px-2 py-2 text-white">
               <Tab.Group>
                 <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
                   <Tab
@@ -148,7 +149,7 @@ export default function Main() {
                 )}
               </Tab.Group>
             </div>
-            <div className="flex basis-1/4 flex-col space-y-4 rounded-2xl bg-gray-800 p-3">
+            <div className="h-full flex basis-1/4 flex-col space-y-6 rounded-2xl bg-gray-800 p-3">
               <MomentTimeCard
                 title="Next launch"
                 launch={upcomingLaunches[0]}
@@ -171,7 +172,7 @@ export default function Main() {
                 }
               />
               <MomentTimeCard
-                title="Next comemrcial launch"
+                title="Next commercial launch"
                 launch={
                   upcomingLaunches.find(
                     (launch) =>

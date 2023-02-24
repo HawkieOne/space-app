@@ -23,24 +23,24 @@ export default function MomentTimeCard({
   return (
     <div
       className={
-        'flex flex-col rounded-lg bg-spacePrimary px-6 py-1 text-white shadow-lg ' +
-        'space-y-4 px-3 py-4' +
+        'flex flex-col rounded-lg bg-spacePrimary px-3 py-2 text-white shadow-lg ' +
+        'space-y-1' +
         className
       }
     >
       <h1 className="text-md text-left text-spaceTealHover laptop:text-lg desktop:text-2xl">
         {title}
       </h1>
-      <div className="text-md laptop:text-md flex flex-col desktop:text-xl">
+      <div className="text-md laptop:text-md flex flex-col desktop:text-md">
         <div className="self-start text-blue-500">
           <Text text={launch ? launch.name : ""} size={TextConstants.small} />
         </div>
         <div className="flex justify-between items-center">
-          <Text text="Date" size={TextConstants.large} />
+          <Text text="Date" size={TextConstants.medium} />
           {launch ? (
             <Moment
               format="YYYY-MM-DD HH:SS"
-              className="text-md desktop:text-lg"
+              className="text-sm desktop:text-md"
             >
               {launch.net}
             </Moment>
@@ -51,13 +51,13 @@ export default function MomentTimeCard({
         <div className="flex items-center justify-between">
           <Text
             text={`Days ${hasLaunchHappened ? ' since ' : ' to '} launch: `}
-            size={TextConstants.large}
+            size={TextConstants.medium}
           />
           {launch ? (
             <Moment
               diff={TODAY}
               unit="days"
-              className={`text-lg laptop:text-3xl ${dayColor}`}
+              className={`text-md laptop:text-2xl ${dayColor}`}
             >
               {launch.net}
             </Moment>
