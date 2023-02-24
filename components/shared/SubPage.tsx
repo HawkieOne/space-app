@@ -12,7 +12,7 @@ type SubPageProps = {
   initialLoading: boolean
   isLoading?: boolean
   showSearch?: boolean
-  onSearchClick?: (searchTerm: string) => void 
+  onSearchClick?: (searchTerm: string) => void
 }
 
 export default function SubPage({
