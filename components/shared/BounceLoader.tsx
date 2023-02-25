@@ -6,7 +6,7 @@ export default function BounceLoader() {
       className="flex h-full w-full flex-col items-center justify-center 
                     space-y-8 text-spacePink"
     >
-      <IoMdPlanet size="4em" className="animate-bounce text-spaceTitle" />
+      <IoMdPlanet size="3em" className="animate-bounce text-spaceTitle" />
     </div>
   )
 }

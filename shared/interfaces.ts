@@ -63,7 +63,7 @@ export interface Agency {
 }
 
 export interface Astronaut {
-  agency: Agency
+  agency: Agency | null
   bio: string
   date_of_birth: Date
   date_of_death: Date | null
@@ -86,7 +86,7 @@ export interface Spacestation {
   description?: string
   founded?: Date
   id: number
-  image_url?: string | null
+  image_url?: string | undefined
   name: string
   orbit?: string
   owners?: Agency[]

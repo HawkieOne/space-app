@@ -14,8 +14,8 @@ export default function Search({ onSearchClick }: SearchProps) {
         <input
           type="text"
           placeholder="Search..."
-          className="rounded-l-xl border-0 bg-gray-900 px-3 text-white 
-                 outline-spaceTitle ring-spaceTitle focus:text-spacePink focus:outline-0"
+          className="rounded-l-xl border-0 bg-gray-900 px-3 text-white focus:text-spacePink 
+                     focus:outline-none focus:ring-0 focus:border-none"
           value={searchTerm}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setSearchTerm(e.target.value)
@@ -27,12 +27,12 @@ export default function Search({ onSearchClick }: SearchProps) {
                      hover:text-red-500`}
             onClick={() => setSearchTerm('')}
           >
-            <TiDelete size="1.5em" />
+            <TiDelete size="1.25em" />
           </button>
         )}
       </div>
       <button
-        className="rounded-r-lg bg-spaceTitle p-3 text-white hover:bg-spaceTealHover"
+        className="rounded-r-lg bg-spaceTitle p-2 text-white hover:bg-spaceTealHover"
         onMouseDown={() => onSearchClick(searchTerm)}
       >
         <AiOutlineSearch size="1.5em" />

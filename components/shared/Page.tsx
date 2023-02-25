@@ -12,6 +12,7 @@ interface PageProps {
   fetchFunc: (link: string) => Promise<any>
   baseLink: string
   showSearch?: boolean
+  showScrollButton: boolean
 }
 
 export default function Page({
@@ -20,12 +21,14 @@ export default function Page({
   fetchFunc,
   baseLink,
   showSearch,
+  showScrollButton,
 }: PageProps) {
   const [content, setContent] = useState<any[]>([])
   const [searchContent, setSearchContent] = useState<any[]>([])
   const [link, setLink] = useState<string | null>(`${BASE_URL}${baseLink}`)
   const [isLoading, setIsLoading] = useState(false)
   const [isInitialLoading, setIsInitialLoading] = useState(true)
+  const [isSearchLoading, setIsSearchLoading] = useState(false)
 
   useEffect(() => {
     fetchData(link, fetchFunc).then(() => setIsInitialLoading(false))
@@ -61,20 +64,21 @@ export default function Page({
       isLoading={isLoading}
       showSearch={showSearch}
       onSearchClick={async (searchTerm) => {
-        if (searchTerm)
-          console.log(`${BASE_URL}${baseLink}?search=${searchTerm}`)
-        console.log(`${BASE_URL}event/upcoming?search=${searchTerm}`)
+        setIsSearchLoading(true)
         await spaceAPI.getSearchQuery!(
           `${BASE_URL}${baseLink}?search=${searchTerm}`
         )
           .then((res: ApiResponse) => {
-            console.log(res)
             setSearchContent([...res.results])
+            setIsSearchLoading(false)
           })
           .catch((error) => {
             console.log(error)
+            setIsSearchLoading(false)
           })
       }}
+      isSearchLoading={isSearchLoading}
+      showScrollButton
     >
       {searchContent.length > 0 ? (
         searchContent.map((item: any, index: number) => {

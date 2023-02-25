@@ -9,11 +9,12 @@ export default function CircleLoadingIndicator() {
       className="flex h-full w-full flex-col items-center justify-center 
                     space-y-8 text-spacePink"
     >
-      <div className="xl:text- text-md flex animation-spin items-center space-x-6 text-xl xl:text-lg">
+      <div className="w-1/6 p-4 text-md flex animation-spin justify-between items-center space-x-6 
+                        text-xl xl:text-lg">
         <BsStars size="3em" className="text-yellow-500" />
-        <IoMdPlanet size="4em" className='text-spaceTitle'/>
         <BsStars size="3em" className="text-yellow-500" />
       </div>
+        <IoMdPlanet size="4em" className='text-spaceTitle absolute -rotate-45'/>
     </div>
   )
 }

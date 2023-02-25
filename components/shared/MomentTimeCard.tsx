@@ -23,24 +23,24 @@ export default function MomentTimeCard({
   return (
     <div
       className={
-        'flex flex-col rounded-lg bg-spacePrimary px-3 py-2 text-white shadow-lg ' +
+        'flex flex-col rounded-lg bg-spaceTitle/5 px-3 py-2 text-white shadow-md ' +
         'space-y-1' +
         className
       }
     >
-      <h1 className="text-md text-left text-spaceTealHover laptop:text-lg desktop:text-2xl">
+      <h1 className="text-md text-left text-spaceTextInfo laptop:text-lg desktop:text-2xl">
         {title}
       </h1>
-      <div className="text-md laptop:text-md flex flex-col desktop:text-md">
+      <div className="text-md laptop:text-md desktop:text-md flex flex-col">
         <div className="self-start text-blue-500">
-          <Text text={launch ? launch.name : ""} size={TextConstants.small} />
+          <Text text={launch ? launch.name : ''} size={TextConstants.small} />
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <Text text="Date" size={TextConstants.medium} />
           {launch ? (
             <Moment
               format="YYYY-MM-DD HH:SS"
-              className="text-sm desktop:text-md"
+              className="desktop:text-md text-sm"
             >
               {launch.net}
             </Moment>

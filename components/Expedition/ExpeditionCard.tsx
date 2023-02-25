@@ -13,14 +13,8 @@ export default function ExpeditionCard({ item }: ExpeditionProp) {
       onClick={() => {}}
       data={{ name: item.name, content: item }}
       wikipedia={true}
+      imgSrc={item.spacestation.image_url}
     >
-      {item.spacestation.image_url && (
-        <img
-          className="h-full w-80 rounded-l-lg object-cover"
-          src={item.spacestation.image_url}
-          alt="Event image"
-        />
-      )}
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">

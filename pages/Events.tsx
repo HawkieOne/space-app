@@ -11,6 +11,7 @@ export default function Events() {
       fetchFunc={spaceAPI.getEvents!}
       baseLink={`event/upcoming`}
       showSearch
+      showScrollButton
     />
   )
 }

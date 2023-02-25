@@ -41,7 +41,7 @@ export default function Main() {
       })
   }, [])
   return (
-    <SubPage title="Launches" initialLoading={!upcomingLaunches && !previousLaunches}>
+    <SubPage title="" initialLoading={!upcomingLaunches && !previousLaunches}>
       {currentLaunch && upcomingLaunches && previousLaunches && (
         // Is the outer div needed?
         <div className="flex w-full bg-gray-900">
@@ -149,7 +149,7 @@ export default function Main() {
                 )}
               </Tab.Group>
             </div>
-            <div className="h-full flex basis-1/4 flex-col space-y-6 rounded-2xl bg-gray-800 p-3">
+            <div className="h-full flex basis-1/4 flex-col justify-around rounded-2xl bg-gray-800 p-3">
               <MomentTimeCard
                 title="Next launch"
                 launch={upcomingLaunches[0]}

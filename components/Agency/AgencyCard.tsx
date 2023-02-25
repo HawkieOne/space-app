@@ -12,15 +12,9 @@ export default function AgencyCard({ item }: AgencyCardProps) {
       onClick={() => {}}
       data={{ name: item.name, content: item }}
       wikipedia={true}
+      imgSrc={item.image_url}
     >
-      {item.image_url && (
-        <img
-          className="h-full w-80 self-center rounded-lg object-cover shadow-2xl xl:w-96"
-          src={item.image_url}
-          alt="Agency image"
-        />
-      )}
-      <div className="flex w-full flex-col justify-around space-y-2">
+      <div className="flex w-full flex-col justify-around space-y-2 p-4 pb-0">
         <div className="flex space-x-2">
           <h3 className="mb-1 font-light uppercase text-teal-500">
             {item.abbrev}
@@ -34,7 +28,7 @@ export default function AgencyCard({ item }: AgencyCardProps) {
           <InfoColorPill data={item.spacecraft} bgColor="bg-sky-500" />
           <InfoColorPill data={item.type} bgColor="bg-lime-500" />
         </div>
-        <span className="text-5xl text-spaceText">{item.name}</span>
+        <span className="text-2xl text-spaceText">{item.name}</span>
         <div className="mt-4 flex items-center">
           <div className="xl:text-md w-3/4 pr-2 text-xs">
             {item.description}

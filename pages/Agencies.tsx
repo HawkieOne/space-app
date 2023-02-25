@@ -11,6 +11,7 @@ export default function Agencies() {
       fetchFunc={spaceAPI.getAgencies!}
       baseLink={`agencies`}
       showSearch
+      showScrollButton
     />
   )
 }
