@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Astronaut } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import bgImage from '../../public/Astronauts.png';
 
 type AstronautCard = {
   item?: Astronaut
@@ -13,6 +14,7 @@ export default function AstronautCard({ item }: AstronautCard) {
       data={{ name: item.name, content: item }}
       wikipedia={true}
       imgSrc={item.profile_image_thumbnail}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col p-4 pb-0">
         <div className="flex space-x-2">
@@ -25,7 +27,7 @@ export default function AstronautCard({ item }: AstronautCard) {
             {item.nationality}
           </div>
           <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-            {item.agency.name}
+            {item.agency?.name}
           </div>
         </div>
         <span className="text-grey-darkest text-5xl">{item.name}</span>

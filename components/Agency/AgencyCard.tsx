@@ -1,6 +1,7 @@
 import { Agency } from '../../shared/interfaces'
 import Card from '../shared/Card'
 import InfoColorPill from '../shared/InfoColorPill'
+import bgImage from '../../public/Agencies.png';
 
 type AgencyCardProps = {
   item?: Agency
@@ -13,6 +14,7 @@ export default function AgencyCard({ item }: AgencyCardProps) {
       data={{ name: item.name, content: item }}
       wikipedia={true}
       imgSrc={item.image_url}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col justify-around space-y-2 p-4 pb-0">
         <div className="flex space-x-2">

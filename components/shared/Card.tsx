@@ -7,6 +7,7 @@ type CardProps = {
   data: DownloadObject
   wikipedia: boolean
   imgSrc: string | undefined
+  bgImg: string
 }
 
 const imgLink = "https://images.unsplash.com/photo-1636819488537-a9b1ffb315ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80";
@@ -16,6 +17,7 @@ export default function Card({
   data,
   wikipedia,
   imgSrc,
+  bgImg
 }: CardProps) {
   return (
     <div
@@ -27,7 +29,7 @@ export default function Card({
         <picture>
           <source srcSet={imgSrc} />
           <img
-            src={imgLink}
+            src={bgImg}
             className="max-h-32 rounded-l-lg object-cover"
           />
         </picture>

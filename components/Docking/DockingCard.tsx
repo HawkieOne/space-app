@@ -3,6 +3,7 @@ import Card from '../shared/Card'
 import InfoColorPill from '../shared/InfoColorPill'
 import Text from '../shared/Text/Text'
 import { TextConstants } from '../../shared/constants'
+import bgImage from '../../public/Dockings.png';
 
 interface DockingProp {
   item?: Docking
@@ -14,6 +15,7 @@ export default function DockingCard({ item }: DockingProp) {
       data={{ name: item.docking_location.name || '', content: item }}
       wikipedia={false}
       imgSrc={item.flight_vehicle.spacecraft.spacecraft_config.image_url}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col space-y-2 p-4 pb-0">
         <div className="flex space-x-2">

@@ -2,6 +2,7 @@ import React from 'react'
 import { LaunchVehicle } from '../../shared/interfaces'
 import Card from '../shared/Card'
 import NullWrapper from '../shared/NullWrapper'
+import bgImage from '../../public/LaunchVehicles.png';
 
 type LaunchVehicleCardProps = {
   item?: LaunchVehicle
@@ -14,6 +15,7 @@ export default function LaunchVehicleCard({ item }: LaunchVehicleCardProps) {
       data={{ name: item.launcher_config?.name || '', content: item }}
       wikipedia
       imgSrc={item.image_url}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col p-4 pb-0">
         <div className="flex space-x-2">

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Expedition } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import bgImage from '../../public/Expeditions.png';
 
 interface ExpeditionProp {
   item?: Expedition
@@ -14,6 +15,7 @@ export default function ExpeditionCard({ item }: ExpeditionProp) {
       data={{ name: item.name, content: item }}
       wikipedia={true}
       imgSrc={item.spacestation.image_url}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">

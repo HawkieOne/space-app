@@ -4,6 +4,7 @@ import Card from '../shared/Card'
 import InfoColorPill from '../shared/InfoColorPill'
 import NullWrapper from '../shared/NullWrapper'
 import Text from '../shared/Text/Text'
+import bgImage from '../../public/Events.png';
 
 interface EventCardProps {
   item?: Event
@@ -16,6 +17,7 @@ export default function EventCard({ item }: EventCardProps) {
       data={{ name: item.name, content: item }}
       wikipedia={false}
       imgSrc={item?.feature_image}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col justify-around space-y-2 p-4 pb-0">
         <div className="flex items-baseline space-x-2">

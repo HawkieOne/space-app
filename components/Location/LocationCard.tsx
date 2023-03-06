@@ -1,5 +1,6 @@
 import { Location } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import bgImage from '../../public/Locations.png';
 
 interface LocationProp {
   item?: Location
@@ -11,6 +12,7 @@ export default function LocationCard({ item }: LocationProp) {
       data={{ name: item.name.split(',')[0], content: item }}
       wikipedia
       imgSrc={item.map_image}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">

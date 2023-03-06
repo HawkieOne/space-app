@@ -1,6 +1,7 @@
 import React from 'react'
 import { Spacecraft } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import bgImage from '../../public/Spacecrafts.png';
 
 type SpacecraftProps = {
   item?: Spacecraft
@@ -13,6 +14,7 @@ export default function SpacecraftCard({ item }: SpacecraftProps) {
       data={{ name: item.spacecraft_config.name, content: item }}
       wikipedia
       imgSrc={item.spacecraft_config.image_url}
+      bgImg={bgImage.src}
     >
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
