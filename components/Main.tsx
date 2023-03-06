@@ -179,7 +179,6 @@ export default function Main() {
                       launch.launch_service_provider.type === 'Commercial'
                   ) || null
                 }
-                hasLaunchHappened={true}
               />
             </div>
           </div>

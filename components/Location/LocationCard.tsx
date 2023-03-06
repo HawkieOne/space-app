@@ -11,6 +11,7 @@ export default function LocationCard({ item }: LocationProp) {
       onClick={() => {}}
       data={{ name: item.name.split(',')[0], content: item }}
       wikipedia
+      locationId={item.id}
       imgSrc={item.map_image}
       bgImg={bgImage.src}
     >

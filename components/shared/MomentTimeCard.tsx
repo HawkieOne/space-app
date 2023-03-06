@@ -20,7 +20,9 @@ export default function MomentTimeCard({
   dayColor = 'text-emerald-700',
   hasLaunchHappened = false,
 }: MomentTimeCardProps) {
+  console.log(launch?.name + " " + launch?.net);
   return (
+    
     <div
       className={
         'flex flex-col rounded-lg bg-spaceTitle/5 px-3 py-2 text-white shadow-md ' +
@@ -39,7 +41,7 @@ export default function MomentTimeCard({
           <Text text="Date" size={TextConstants.medium} />
           {launch ? (
             <Moment
-              format="YYYY-MM-DD HH:SS"
+              format="YYYY-MM-DD HH:MM"
               className="desktop:text-md text-sm"
             >
               {launch.net}
