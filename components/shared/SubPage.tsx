@@ -16,7 +16,7 @@ type SubPageProps = {
   showSearch?: boolean
   onSearchClick?: (searchTerm: string) => void
   isSearchLoading?: boolean
-  showScrollButton: boolean
+  showScrollButton?: boolean
 }
 
 export default function SubPage({
