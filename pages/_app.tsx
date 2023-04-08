@@ -6,14 +6,12 @@ import Head from 'next/head'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex h-full w-full flex-col bg-gray-900">
+    <div className="flex min-h-screen h-fit w-full flex-col bg-space bg-fixed">
       <Head>
         <title>SpacQ</title>
         <link rel="icon" href="/space.ico" />
       </Head>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <DashboardTabber />
       <Component {...pageProps} />
     </div>

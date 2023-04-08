@@ -44,7 +44,7 @@ export default function Main() {
     <SubPage title="" initialLoading={!upcomingLaunches && !previousLaunches}>
       {currentLaunch && upcomingLaunches && previousLaunches && (
         // Is the outer div needed?
-        <div className="flex w-full bg-gray-900">
+        <div className="flex w-full bg-transparent">
           <div className="max-h-2/4 flex w-full gap-5 items-start justify-center">
             <Box
               padding="px-6 py-3"
@@ -60,7 +60,9 @@ export default function Main() {
                     className="h-96 rounded-lg shadow-2xl"
                   />
                 </div>
-                <InfoRow title={'Name'} info={currentLaunch.name} />
+                <InfoRow 
+                  title={'Name'} 
+                  info={currentLaunch.name} />
                 <InfoRow
                   title={'Company'}
                   info={currentLaunch.launch_service_provider.name}

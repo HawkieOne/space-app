@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'space': "url('../public/background2.webp')", 
+      },
       colors: {
         spacePrimary: '#1e293b',
         spaceTextInfo: '#d9d6ce',

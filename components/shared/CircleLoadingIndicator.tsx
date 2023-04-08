@@ -2,6 +2,7 @@ import React from 'react'
 import { BsStars } from 'react-icons/bs'
 import { IoMdPlanet } from 'react-icons/io'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import planet from "../../images/planet.webp";
 
 export default function CircleLoadingIndicator() {
   return (
@@ -9,12 +10,18 @@ export default function CircleLoadingIndicator() {
       className="flex h-full w-full flex-col items-center justify-center 
                     space-y-8 text-spacePink"
     >
-      <div className="w-1/6 p-4 text-md flex animation-spin justify-between items-center space-x-6 
+      <div className="w-1/6 p-10 text-md flex animation-spin justify-between items-center space-x-6 
                         text-xl xl:text-lg">
-        <BsStars size="3em" className="text-yellow-500" />
-        <BsStars size="3em" className="text-yellow-500" />
+        <div className="h-12 w-12 rotate-[120deg]">
+          <img src="comet.webp" alt="comet"></img>
+        </div>
+        <div className="h-12 w-12 -rotate-[60deg]">
+          <img src="comet.webp" alt="comet"></img>
+        </div>
       </div>
-        <IoMdPlanet size="4em" className='text-spaceTitle absolute -rotate-45'/>
+      <div className="absolute h-16 w-16">
+        <img src="planet.webp" alt="planet"></img>
+      </div>
     </div>
   )
 }

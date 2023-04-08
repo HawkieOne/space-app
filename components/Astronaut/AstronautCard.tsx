@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import InfoColorPill from '../shared/InfoColorPill'
 import { Astronaut } from '../../shared/interfaces'
 import Card from '../shared/Card'
 import bgImage from '../../public/Astronauts.png';
@@ -10,7 +11,7 @@ type AstronautCard = {
 export default function AstronautCard({ item }: AstronautCard) {
   return item ? (
     <Card
-      onClick={() => {}}
+      onClick={() => { }}
       data={{ name: item.name, content: item }}
       wikipedia={true}
       imgSrc={item.profile_image_thumbnail}
@@ -23,12 +24,8 @@ export default function AstronautCard({ item }: AstronautCard) {
           </h3>
         </div>
         <div className="flex space-x-2">
-          <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-            {item.nationality}
-          </div>
-          <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-            {item.agency?.name}
-          </div>
+          <InfoColorPill data={item.nationality} bgColor="bg-yellow-500" />
+          <InfoColorPill data={item.agency?.name} bgColor="bg-sky-500" />
         </div>
         <span className="text-grey-darkest text-5xl">{item.name}</span>
         <div className="mt-4 flex items-center">

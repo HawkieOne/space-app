@@ -31,12 +31,18 @@ export default function EventCard({ item }: EventCardProps) {
           </h2>
         </div>
         <div className="flex space-x-2">
-          <InfoColorPill data={item?.location} bgColor="bg-yellow-500" />
+          <InfoColorPill 
+            data={item?.location} 
+            bgColor="bg-yellow-500" 
+          />
           <InfoColorPill
             data={item?.launches[0]?.launch_service_provider.name}
             bgColor="bg-sky-500"
           />
-          <InfoColorPill data={item?.launches[0]?.name} bgColor="bg-lime-500" />
+          <InfoColorPill 
+            data={item?.launches[0]?.name} 
+            bgColor="bg-lime-500"
+          />
         </div>
         <span className="text-grey-darkest text-xl desktop:text-2xl">
           {item?.name}

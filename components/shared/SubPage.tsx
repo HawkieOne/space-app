@@ -36,7 +36,7 @@ export default function SubPage({
     }
   })
   return (
-    <div className="relative flex grow flex-col items-center justify-start space-y-4 bg-gray-900 p-4">
+    <div className="relative flex grow flex-col items-center justify-start space-y-4 bg-transparent p-4">
       <div className="flex w-3/4 items-center justify-between">
         {title && <PageTitle title={title} />}
         {showSearch && onSearchClick && !initialLoading && (

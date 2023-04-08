@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { TiDelete } from 'react-icons/ti'
 
@@ -19,6 +19,11 @@ export default function Search({ onSearchClick }: SearchProps) {
           value={searchTerm}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setSearchTerm(e.target.value)
+          }}
+          onKeyDown={(event: KeyboardEvent<HTMLInputElement>) => {
+            if (event.key === "Enter") {
+              onSearchClick(searchTerm)
+            }
           }}
         />
         {searchTerm && (

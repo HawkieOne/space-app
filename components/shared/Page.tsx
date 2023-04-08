@@ -31,7 +31,7 @@ export default function Page({
   const [isSearchLoading, setIsSearchLoading] = useState(false)
 
   useEffect(() => {
-    fetchData(link, fetchFunc).then(() => setIsInitialLoading(false))
+    fetchData(link, fetchFunc).then(() => (setIsInitialLoading(false)))
   }, [link])
 
   const fetchData = async (

@@ -1,5 +1,4 @@
 import { spaceAPI } from '../api/spaceDevsApi'
-import { BASE_URL } from '../api/utilitites/provider'
 import EventCard from '../components/Event/EventCard'
 import Page from '../components/shared/Page'
 

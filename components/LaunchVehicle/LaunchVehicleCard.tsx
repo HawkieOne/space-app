@@ -2,6 +2,7 @@ import React from 'react'
 import { LaunchVehicle } from '../../shared/interfaces'
 import Card from '../shared/Card'
 import NullWrapper from '../shared/NullWrapper'
+import InfoColorPill from '../shared/InfoColorPill'
 import bgImage from '../../public/LaunchVehicles.png';
 
 type LaunchVehicleCardProps = {
@@ -11,7 +12,7 @@ type LaunchVehicleCardProps = {
 export default function LaunchVehicleCard({ item }: LaunchVehicleCardProps) {
   return item ? (
     <Card
-      onClick={() => {}}
+      onClick={() => { }}
       data={{ name: item.launcher_config?.name || '', content: item }}
       wikipedia
       imgSrc={item.image_url}
@@ -30,14 +31,8 @@ export default function LaunchVehicleCard({ item }: LaunchVehicleCardProps) {
         </div>
         <div className="flex space-x-2">
           <NullWrapper item={item.launcher_config}>
-            <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-              {item.launcher_config?.full_name}
-            </div>
-          </NullWrapper>
-          <NullWrapper item={item.launcher_config}>
-            <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-              {item.launcher_config?.variant}
-            </div>
+            <InfoColorPill data={item?.launcher_config?.full_name} bgColor="bg-yellow-500" />
+            <InfoColorPill data={item?.launcher_config?.variant} bgColor="bg-sky-500" />
           </NullWrapper>
         </div>
       </div>

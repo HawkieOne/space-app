@@ -1,5 +1,6 @@
 import { Location } from '../../shared/interfaces'
 import Card from '../shared/Card'
+import InfoColorPill from '../shared/InfoColorPill';
 import bgImage from '../../public/Locations.png';
 
 interface LocationProp {
@@ -8,7 +9,7 @@ interface LocationProp {
 export default function LocationCard({ item }: LocationProp) {
   return item ? (
     <Card
-      onClick={() => {}}
+      onClick={() => { }}
       data={{ name: item.name.split(',')[0], content: item }}
       wikipedia
       locationId={item.id}
@@ -18,12 +19,14 @@ export default function LocationCard({ item }: LocationProp) {
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
           <div className="flex space-x-2">
-            <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs text-black">
-              Landings: {item.total_landing_count}
-            </div>
-            <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-              Launches: {item.total_launch_count}
-            </div>
+            <InfoColorPill
+              data={"Landings: " + item.total_landing_count}
+              bgColor="bg-yellow-500"
+            />
+            <InfoColorPill
+              data={"Launches: " + item.total_launch_count}
+              bgColor="bg-sky-500"
+            />
           </div>
           <div className="flex space-x-2">
             <h3 className="mb-1 font-light uppercase text-teal-500">

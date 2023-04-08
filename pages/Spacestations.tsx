@@ -4,6 +4,7 @@ import { spaceAPI } from '../api/spaceDevsApi'
 import CustomSelect from '../components/shared/CustomSelect'
 import SubPage from '../components/shared/SubPage'
 import SpacestationCard from '../components/Spacestation/SpacestationCard'
+import Page from '../components/shared/Page'
 import { BASE_URL } from '../api/utilitites/provider'
 import {
     optionsSpaceStations,
@@ -60,39 +61,48 @@ export default function Spacestations() {
     return 0
   }
 
-  useEffect(() => {
-    spaceAPI?.getSpaceStations!(`${BASE_URL}spacestation`)
-      .then((res: ApiResponse) => {
-        console.log(res)
-        const results = res.results
-        results.sort(compareOldest)
-        setSpacestations(results)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+  // useEffect(() => {
+  //   spaceAPI?.getSpaceStations!(`${BASE_URL}spacestation`)
+  //     .then((res: ApiResponse) => {
+  //       console.log(res)
+  //       const results = res.results
+  //       results.sort(compareOldest)
+  //       setSpacestations(results)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }, [])
 
   return (
-    <SubPage title="Spacestations" initialLoading={!spacestations}>
-      {spacestations && (
-        <div className="flex flex-col space-y-6 p-6">
-          <CustomSelect
-            options={optionsSpaceStations}
-            onChange={onSortMethodChange}
-            placeholder="Sort by"
-          />
-          <motion.div layout className="grid grid-cols-4 gap-6">
-            {spacestations.map((spacestation: Spacestation, index: number) => (
-              <SpacestationCard
-                spacestation={spacestation}
-                key={index}
-                index={index}
-              />
-            ))}
-          </motion.div>
-        </div>
-      )}
-    </SubPage>
+    <Page
+      title="Spacestations"
+      listItem={<SpacestationCard />}
+      fetchFunc={spaceAPI.getSpaceStations!}
+      baseLink={`spacestation`}
+      showSearch
+      showScrollButton
+    />
   )
+  //   <SubPage title="Spacestations" initialLoading={!spacestations}>
+  //     {spacestations && (
+  //       <div className="flex flex-col space-y-6 p-6">
+  //         <CustomSelect
+  //           options={optionsSpaceStations}
+  //           onChange={onSortMethodChange}
+  //           placeholder="Sort by"
+  //         />
+  //         <motion.div layout className="grid grid-cols-4 gap-6">
+  //           {spacestations.map((spacestation: Spacestation, index: number) => (
+  //             <SpacestationCard
+  //               spacestation={spacestation}
+  //               key={index}
+  //               index={index}
+  //             />
+  //           ))}
+  //         </motion.div>
+  //       </div>
+  //     )}
+  //   </SubPage>
+  // )
 }
