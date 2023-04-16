@@ -23,12 +23,12 @@ export default function AstronautCard({ item }: AstronautCard) {
             {item.date_of_birth}-{item.date_of_death}
           </h3>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
           <InfoColorPill data={item.nationality} bgColor="bg-yellow-500" />
           <InfoColorPill data={item.agency?.name} bgColor="bg-sky-500" />
         </div>
-        <span className="text-grey-darkest text-5xl">{item.name}</span>
-        <div className="mt-4 flex items-center">
+        <span className="my-1 text-grey-darkest text-2xl">{item.name}</span>
+        <div className="flex items-center">
           <div className="pr-2 text-xs">
             <i className="fas fa-wifi text-green"></i> {item.bio}
           </div>

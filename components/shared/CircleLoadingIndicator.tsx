@@ -10,7 +10,7 @@ export default function CircleLoadingIndicator() {
       className="flex h-full w-full flex-col items-center justify-center 
                     space-y-8 text-spacePink"
     >
-      <div className="w-1/6 p-10 text-md flex animation-spin justify-between items-center space-x-6 
+      <div className="lg:w-1/6 p-10 text-md flex animation-spin justify-between items-center space-x-28 lg:space-x-4 
                         text-xl xl:text-lg">
         <div className="h-12 w-12 rotate-[120deg]">
           <img src="comet.webp" alt="comet"></img>

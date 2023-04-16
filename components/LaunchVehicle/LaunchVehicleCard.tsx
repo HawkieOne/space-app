@@ -29,7 +29,7 @@ export default function LaunchVehicleCard({ item }: LaunchVehicleCardProps) {
             </h2>
           </NullWrapper>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex flex-col space-y-2 space-x-0 md:flex-row md:space-x-2 md:space-y-0">
           <NullWrapper item={item.launcher_config}>
             <InfoColorPill data={item?.launcher_config?.full_name} bgColor="bg-yellow-500" />
             <InfoColorPill data={item?.launcher_config?.variant} bgColor="bg-sky-500" />

@@ -19,18 +19,12 @@ export default function SpacecraftCard({ item }: SpacecraftProps) {
     >
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
-          <div className="flex space-x-2">
-            <InfoColorPill
-              data={item.status.name}
-              bgColor="bg-yellow-500"
-            />
-            <InfoColorPill
-              data={item.spacecraft_config.agency.name}
-              bgColor="bg-sky-500"
-            />
+          <div className="flex flex-col space-y-2 space-x-0 md:flex-row md:space-x-2 md:space-y-0">
+            <InfoColorPill data={item.status.name} bgColor="bg-yellow-500" />
+            <InfoColorPill data={item.spacecraft_config.agency.name} bgColor="bg-sky-500" />
           </div>
-          <span className="text-grey-darkest text-xl xl:text-3xl">{item.name}</span>
-          <div className="mt-4 flex items-center text-sm">
+          <span className="my-2 text-grey-darkest text-xl xl:text-3xl">{item.name}</span>
+          <div className="flex items-center text-sm">
             {item.description}
           </div>
         </div>

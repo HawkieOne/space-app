@@ -18,7 +18,7 @@ export default function LocationCard({ item }: LocationProp) {
     >
       <div className="flex w-full flex-col">
         <div className="flex-1 p-4 pb-0">
-          <div className="flex space-x-2">
+          <div className="flex flex-col space-y-2 space-x-0 md:flex-row md:space-x-2 md:space-y-0">
             <InfoColorPill
               data={"Landings: " + item.total_landing_count}
               bgColor="bg-yellow-500"

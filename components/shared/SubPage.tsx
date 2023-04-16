@@ -37,7 +37,7 @@ export default function SubPage({
   })
   return (
     <div className="relative flex grow flex-col items-center justify-start space-y-4 bg-transparent p-4">
-      <div className="flex w-3/4 items-center justify-between">
+      <div className="flex flex-col md:flex-row gap-4 w-11/12 lg:w-3/4 items-center justify-between">
         {title && <PageTitle title={title} />}
         {showSearch && onSearchClick && !initialLoading && (
           <div className="self-center">

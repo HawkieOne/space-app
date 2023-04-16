@@ -5,10 +5,11 @@ import { useRouter } from 'next/router'
 
 export default function DashboardTabber() {
   const router = useRouter()
+  
   return (
-    <nav className="bg-transparent max-w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex h-16 items-center justify-center">
-        <div className="hidden md:block">
+    <nav className="bg-transparent">
+      <div className="hidden lg:flex max-w-4/5 mx-auto px-4 sm:px-6 lg:px-8 h-16 items-center justify-center">
+        <div className="">
           <div className="ml-10 flex items-baseline space-x-4">
             {navLinks.map((item, index) => {
               return (

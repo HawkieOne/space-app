@@ -30,14 +30,14 @@ export default function EventCard({ item }: EventCardProps) {
             {new Date(item?.date).toLocaleString()}
           </h2>
         </div>
-        <div className="flex space-x-2">
-          <InfoColorPill 
-            data={item?.location} 
-            bgColor="bg-yellow-500" 
-          />
+        <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
           <InfoColorPill
             data={item?.launches[0]?.launch_service_provider.name}
             bgColor="bg-sky-500"
+          />
+          <InfoColorPill 
+            data={item?.location} 
+            bgColor="bg-yellow-500" 
           />
           <InfoColorPill 
             data={item?.launches[0]?.name} 
@@ -47,7 +47,7 @@ export default function EventCard({ item }: EventCardProps) {
         <span className="text-grey-darkest text-xl desktop:text-2xl">
           {item?.name}
         </span>
-        <div className="flex w-3/4 items-center pr-2">
+        <div className="flex md:w-3/4 items-center pr-2">
           <Text text={item?.description} size={TextConstants.tiny} />
         </div>
       </div>

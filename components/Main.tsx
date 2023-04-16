@@ -45,7 +45,7 @@ export default function Main() {
       {currentLaunch && upcomingLaunches && previousLaunches && (
         // Is the outer div needed?
         <div className="flex w-full bg-transparent">
-          <div className="max-h-2/4 flex w-full gap-5 items-start justify-center">
+          <div className="flex flex-col md:flex-row max-h-2/4 w-full gap-5 items-start justify-center">
             <Box
               padding="px-6 py-3"
               spaceY="space-y-4"
@@ -151,7 +151,8 @@ export default function Main() {
                 )}
               </Tab.Group>
             </div>
-            <div className="h-full flex basis-1/4 flex-col justify-around rounded-2xl bg-gray-800 p-3">
+
+            <div className="w-full h-full flex basis-1/4 flex-col gap-6 md:gap-0 justify-around rounded-2xl bg-gray-800 p-3">
               <MomentTimeCard
                 title="Next launch"
                 launch={upcomingLaunches[0]}

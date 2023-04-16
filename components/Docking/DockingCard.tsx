@@ -26,7 +26,7 @@ export default function DockingCard({ item }: DockingProp) {
           {item?.flight_vehicle.spacecraft.name}
           </h3>
         </div>
-        <div className="flex space-x-2">
+        <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
           <InfoColorPill
             data={'Destination: ' + item?.docking_location.spacestation.name}
             bgColor="bg-lime-500"

@@ -10,7 +10,7 @@ export default function InfoColorPill({ data, bgColor, textColor } : InfoColorPi
   return (
     <div>
       {data && (
-        <div className={`desktop:text-md flex items-center rounded-full px-2 py-1 text-xs 
+        <div className={`desktop:text-md flex items-center rounded-full px-2 py-1 text-xs w-fit 
         ${bgColor} ${textColor ? textColor : "text-black"}`}>
           {data}
         </div>

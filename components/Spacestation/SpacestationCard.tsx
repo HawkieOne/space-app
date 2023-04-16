@@ -25,7 +25,7 @@ export default function SpacestationCard({ item }: any) {
                 </h3>
               </NullWrapper>
             </div>
-            <div className="flex space-x-2">
+            <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
               <InfoColorPill data={item.deorbited !== null ? "Deorbited" : "In orbit"} 
               bgColor="bg-gray-900"
               textColor={item.deorbited !== null ? "text-red-700" : "text-green-500"} />
@@ -33,9 +33,9 @@ export default function SpacestationCard({ item }: any) {
             <span className="text-grey-darkest text-xl desktop:text-2xl">
               {item?.name}
             </span>
-            {/* <div className="flex w-3/4 items-center pr-2">
+            <div className="flex items-center pr-2">
               <Text text={item?.description} size={TextConstants.tiny} />
-            </div> */}
+            </div>
           </div>
         </Card>
   )

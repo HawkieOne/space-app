@@ -11,7 +11,6 @@ type CardProps = {
   locationId?: Number;
 }
 
-const imgLink = "https://images.unsplash.com/photo-1636819488537-a9b1ffb315ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80";
 export default function Card({
   children,
   onClick,
@@ -23,7 +22,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className="relative grid w-3/4 grid-cols-7
+      className="relative w-11/12 lg:w-3/4 md:grid grid-cols-7
                  rounded bg-spacePrimary px-2 py-4 text-spaceText shadow-md"
       onClick={onClick}
     >

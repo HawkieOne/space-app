@@ -14,8 +14,8 @@ export default function InfoRow({
   infoColor = 'text-spaceTextInfo',
 }: InfoRowProps) {
   return (
-    <div className="flex w-full items-center justify-between">
-      <Text text={title} capitalize={true} size={TextConstants.large} />
+    <div className="flex gap-6 w-full items-center justify-between">
+      <Text text={title} capitalize={true} size={TextConstants.small + ' md:' + TextConstants.large} />
       <Text
         text={info ? info : 'Unknown'}
         capitalize={true}

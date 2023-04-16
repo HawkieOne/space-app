@@ -28,21 +28,9 @@ export default function ExpeditionCard({ item }: ExpeditionProp) {
               {new Date(item?.start).toLocaleString()}
             </h2>
           </div>
-          <div className="flex space-x-2">
-            <InfoColorPill
-              data={item?.spacestation.name}
-              bgColor="bg-yellow-500"
-            />
-            <InfoColorPill
-              data={item?.spacestation.orbit}
-              bgColor="bg-sky-500"
-            />
-            {/* <div className="mb-4 flex items-center rounded-full bg-yellow-500 px-2 py-1 text-xs">
-              {item?.spacestation.name}
-            </div>
-            <div className="mb-4 flex items-center rounded-full bg-sky-500 px-2 py-1 text-xs">
-              {item?.spacestation.orbit}
-            </div> */}
+          <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
+            <InfoColorPill data={item?.spacestation.name} bgColor="bg-yellow-500" />
+            <InfoColorPill data={item?.spacestation.orbit} bgColor="bg-sky-500" />
           </div>
         </div>
       </div>

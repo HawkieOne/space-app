@@ -25,14 +25,14 @@ export default function AgencyCard({ item }: AgencyCardProps) {
             {item?.founding_year}
           </h2>
         </div>
-        <div className="flex space-x-2">
-          <InfoColorPill data={item.country_code} bgColor="bg-yellow-500" />
-          <InfoColorPill data={item.spacecraft} bgColor="bg-sky-500" />
+        <div className="flex flex-col space-y-2 space-x-0 lg:flex-row lg:space-x-2 lg:space-y-0">
+          {/* <InfoColorPill data={item.country_code} bgColor="bg-yellow-500" /> */}
           <InfoColorPill data={item.type} bgColor="bg-lime-500" />
+          <InfoColorPill data={item.spacecraft} bgColor="bg-sky-500" />
         </div>
         <span className="text-2xl text-spaceText">{item.name}</span>
         <div className="mt-4 flex items-center">
-          <div className="xl:text-md w-3/4 pr-2 text-xs">
+          <div className="xl:text-md md:w-3/4 pr-2 text-xs">
             {item.description}
           </div>
         </div>
