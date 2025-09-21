@@ -1,7 +1,6 @@
 import Moment from 'react-moment'
 import { TextConstants } from '../../shared/constants'
 import { Launch } from '../../shared/interfaces'
-import SmallText from './Text/SmallText'
 import Text from './Text/Text'
 
 const TODAY = new Date()

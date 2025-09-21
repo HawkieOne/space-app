@@ -8,7 +8,7 @@ type SpacecraftProps = {
 
 export default function SpacecraftCard({ spacecraft } : SpacecraftProps) {
   return (
-    <Card onClick={() => {}} data={{ name: spacecraft.name, content: spacecraft }}>
+    <Card onClick={() => {}} wikipedia={false} data={{ name: spacecraft.name, content: spacecraft }}>
       {spacecraft.spacecraft_config.image_url && (
         <img
           className="h-full w-60 rounded-l-lg object-cover"

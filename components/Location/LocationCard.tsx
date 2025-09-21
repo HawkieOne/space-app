@@ -6,7 +6,7 @@ interface LocationProp {
 }
 export default function LocationCard({ location }: LocationProp) {
   return (
-    <Card onClick={() => {}} data={{ name: location.name, content: location }}>
+    <Card onClick={() => {}} wikipedia={false} data={{ name: location.name, content: location }}>
       {location.map_image && (
         <img
           className="h-full w-80 rounded-l-lg object-cover"
