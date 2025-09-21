@@ -9,7 +9,7 @@ type LaunchVehicleCardProps = {
 
 export default function LaunchVehicleCard({ launchVehicle} : LaunchVehicleCardProps) {
   return (
-    <Card onClick={() => {}} data={{ name: launchVehicle.id.toString(), content: launchVehicle }}>
+    <Card onClick={() => {}} wikipedia={false} data={{ name: launchVehicle.id.toString(), content: launchVehicle }}>
     {launchVehicle.image_url && (
     <img
     className="h-full w-40 rounded-l-lg object-cover"
